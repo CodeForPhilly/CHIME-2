@@ -1,0 +1,22 @@
+# Build
+build/
+dist/
+*.egg
+*.egg-info
+
+# Bytecode
+__pycache__/
+*.pyc
+
+# Editor
+.idea/
+.vscode/
+
+# Environment
+.python-version
+Pipfile.lock
+.venv/
+
+# OS
+.DS_STORE
+Desktop.ini
