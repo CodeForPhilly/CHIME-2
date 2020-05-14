@@ -7,6 +7,7 @@ license = "BSD-3-Clause"
 
 [tool.poetry.dependencies]
 python = "^3.6.9"
+wemake-python-styleguide = "^0.14.0"
 
 [tool.poetry.dev-dependencies]
 black = "^19.10b0"
