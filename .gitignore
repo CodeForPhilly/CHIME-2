@@ -8,6 +8,9 @@ dist/
 __pycache__/
 *.pyc
 
+# mypy
+.mypy_cache/
+
 # Editor
 .idea/
 .vscode/
