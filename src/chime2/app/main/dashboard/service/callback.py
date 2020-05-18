@@ -1,3 +1,0 @@
-"""
-Callback service
-"""

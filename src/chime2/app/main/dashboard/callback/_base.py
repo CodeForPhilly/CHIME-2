@@ -1,3 +1,0 @@
-""""
-Base class for callbacks
-"""
