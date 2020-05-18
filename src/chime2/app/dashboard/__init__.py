@@ -20,13 +20,17 @@ Modules
 callback:
     (controller) responsible for orchestrating interaction between model
     and view
+
 component:
     (view) individual pieces of a page layout
+
 page:
     dashboard layout defined here
+
 process:
     (model) short-lived data manipulations which are triggered by
     callbacks
+
 service:
     Run throughout the life of the dashboard
 """
