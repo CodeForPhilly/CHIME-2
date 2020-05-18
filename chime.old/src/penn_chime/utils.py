@@ -20,5 +20,5 @@ def dataframe_to_base64(df: pd.DataFrame) -> str:
 
 def excel_to_base64(filename: str) -> str:
     """Converts an excel document into base64-encoded data."""
-    with open(filename, 'rb') as fin:
+    with open(filename, "rb") as fin:
         return b64encode(fin.read()).decode()

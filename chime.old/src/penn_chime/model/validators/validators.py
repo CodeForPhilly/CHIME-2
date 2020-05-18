@@ -5,11 +5,12 @@ from datetime import date
 
 from .base import Validator
 
-EPSILON = 1.e-7
+EPSILON = 1.0e-7
 
 
 class OptionalValue(Validator):
     """Any value at all"""
+
     def __init__(self) -> None:
         pass
 
@@ -19,11 +20,13 @@ class OptionalValue(Validator):
 
 class Bounded(Validator):
     """A bounded number."""
+
     def __init__(
-            self,
-            lower_bound: Optional[float] = None,
-            upper_bound: Optional[float] = None) -> None:
-        assert lower_bound is not None or upper_bound is not None, "Do not use this object to create an unbounded validator."
+        self, lower_bound: Optional[float] = None, upper_bound: Optional[float] = None
+    ) -> None:
+        assert (
+            lower_bound is not None or upper_bound is not None
+        ), "Do not use this object to create an unbounded validator."
         self.lower_bound = lower_bound
         self.upper_bound = upper_bound
         self.message = {
@@ -36,17 +39,20 @@ class Bounded(Validator):
         """This method implicitly validates isinstance(value, (float, int)) because it will throw a TypeError on comparison"""
         if value is None:
             raise ValueError(f"{key} is required.")
-        if (self.upper_bound is not None and value > self.upper_bound) \
-           or (self.lower_bound is not None and value < self.lower_bound):
-            raise ValueError(f"{key}: {value} needs to be {self.message[(self.lower_bound, self.upper_bound)]}.")
+        if (self.upper_bound is not None and value > self.upper_bound) or (
+            self.lower_bound is not None and value < self.lower_bound
+        ):
+            raise ValueError(
+                f"{key}: {value} needs to be {self.message[(self.lower_bound, self.upper_bound)]}."
+            )
 
 
 class OptionalBounded(Bounded):
     """a bounded number or a None."""
+
     def __init__(
-            self,
-            lower_bound: Optional[float] = None,
-            upper_bound: Optional[float] = None) -> None:
+        self, lower_bound: Optional[float] = None, upper_bound: Optional[float] = None
+    ) -> None:
         super().__init__(lower_bound=lower_bound, upper_bound=upper_bound)
 
     def validate(self, key, value):
@@ -57,6 +63,7 @@ class OptionalBounded(Bounded):
 
 class Rate(Validator):
     """A rate in [0,1]."""
+
     def __init__(self) -> None:
         pass
 
@@ -64,12 +71,12 @@ class Rate(Validator):
         if value is None:
             raise ValueError(f"{key} is required.")
         if 0.0 > value or value > 1.0:
-            raise ValueError(
-                f"{key}: {value} needs to be a rate (i.e. in [0,1]).")
+            raise ValueError(f"{key}: {value} needs to be a rate (i.e. in [0,1]).")
 
 
 class Date(Validator):
     """A date."""
+
     def __init__(self) -> None:
         pass
 
@@ -97,5 +104,5 @@ class ValDisposition(Validator):
     def validate(self, key, value):
         if value is None:
             raise ValueError(f"{key} is required.")
-        Bounded(lower_bound=EPSILON)(key=key + '_days', value=value.days)
-        Rate()(key=key + '_rate', value=value.rate)
+        Bounded(lower_bound=EPSILON)(key=key + "_days", value=value.days)
+        Rate()(key=key + "_rate", value=value.rate)

@@ -14,10 +14,10 @@ from chime_dash.app.config import from_object
 from chime_dash.app.pages.root import Root
 from chime_dash.app.utils.callbacks import wrap_callbacks
 
-DashAppInstance = TypeVar('DashAppInstance')
+DashAppInstance = TypeVar("DashAppInstance")
 
 
-def create_app(context: str = 'prod') -> DashAppInstance:
+def create_app(context: str = "prod") -> DashAppInstance:
     """
     create_app initializes the app instance
 
@@ -34,10 +34,7 @@ def create_app(context: str = 'prod') -> DashAppInstance:
     Env = from_object(context)
 
     LANGUAGE = Env.LANG
-    body = Root(
-        LANGUAGE,
-        Parameters.create(os.environ, []),
-    )
+    body = Root(LANGUAGE, Parameters.create(os.environ, []),)
 
     App = Dash(
         __name__,

@@ -37,6 +37,7 @@ class MockStreamlit:
 def dash_app():
     return Dash()
 
+
 @pytest.fixture
 def mock_st():
     return MockStreamlit()
@@ -134,7 +135,7 @@ def census_df():
         "tests/by_doubling_time/2020-03-28_projected_census.csv", parse_dates=["date"]
     )
 
+
 @pytest.fixture
 def census_floor_df(param, census_df):
     return build_floor_df(census_df, param.dispositions.keys(), "census_")
-

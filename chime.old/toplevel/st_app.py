@@ -9,5 +9,5 @@ Module is in site-packages, and does not reflect any modifications made in the s
 from penn_chime.view.st_app import main
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -62,7 +62,6 @@ _Disposition = namedtuple("_Disposition", ("days", "rate"))
 
 
 class Disposition(_Disposition):
-
     @classmethod
     def create(cls, *, days: int, rate: float):
         """Mandate key word arguments."""
@@ -83,7 +82,7 @@ class Regions:
 
 
 def cast_date(string):
-    return datetime.strptime(string, '%Y-%m-%d').date()
+    return datetime.strptime(string, "%Y-%m-%d").date()
 
 
 def declarative_validator(cast):
@@ -91,7 +90,7 @@ def declarative_validator(cast):
 
     def validate(string):
         """Validate."""
-        if string == '' and cast != str:
+        if string == "" and cast != str:
             return None
         return cast(string)
 
@@ -103,15 +102,15 @@ def validator(arg, cast, min_value, max_value, required=True):
 
     def validate(string):
         """Validate."""
-        if string == '' and cast != str:
+        if string == "" and cast != str:
             if required:
-                raise ValueError(f'{arg} is required.')
+                raise ValueError(f"{arg} is required.")
             return None
         value = cast(string)
         if min_value is not None and value < min_value:
-            raise ValueError(f'{arg} must be greater than {min_value}.')
+            raise ValueError(f"{arg} must be greater than {min_value}.")
         if max_value is not None and value > max_value:
-            raise ValueError(f'{arg} must be less than {max_value}.')
+            raise ValueError(f"{arg} must be less than {max_value}.")
         return value
 
     return validate
@@ -137,7 +136,7 @@ VALIDATORS = {
     "ventilated": ValDisposition,
     "hospitalized": ValDisposition,
     "icu": ValDisposition,
-    "use_log_scale": OptionalValue
+    "use_log_scale": OptionalValue,
 }
 
 
@@ -162,7 +161,7 @@ HELP = {
     "relative_contact_rate": "Social distancing reduction rate: 0.0 - 1.0",
     "ventilated_days": "Average days on ventilator",
     "ventilated_rate": "Ventilated Rate: 0.0 - 1.0",
-    "use_log_scale": "Flag to use logarithmic scale on charts instead of linear scale."
+    "use_log_scale": "Flag to use logarithmic scale on charts instead of linear scale.",
 }
 
 
@@ -170,148 +169,35 @@ ARGS = (
     (
         "parameters",
         str,
-        None, # Min value
-        None, # Max value
-        False, # Whether it is required or optional.
+        None,  # Min value
+        None,  # Max value
+        False,  # Whether it is required or optional.
     ),
-    (
-        "current_hospitalized",
-        int,
-        0,
-        None,
-        True,
-    ),
-    (
-        "current_date",
-        cast_date,
-        None,
-        None,
-        False,
-    ),
-    (
-        "date_first_hospitalized",
-        cast_date,
-        None,
-        None,
-        False,
-    ),
-    (
-        "doubling_time",
-        float,
-        0.0,
-        None,
-        True,
-    ),
-    (
-        "hospitalized_days",
-        int,
-        1,
-        None,
-        True,
-    ),
-    (
-        "hospitalized_rate",
-        float,
-        0.00001,
-        1.0,
-        True,
-    ),
-    (
-        "icu_days",
-        int,
-        1,
-        None,
-        True,
-    ),
-    (
-        "icu_rate",
-        float,
-        0.0,
-        1.0,
-        True,
-    ),
-    (
-        "market_share",
-        float,
-        0.00001,
-        1.0,
-        True,
-    ),
-    (
-        "infectious_days",
-        int,
-        0.0,
-        None,
-        True,
-    ),
-    (
-        "mitigation_date",
-        cast_date,
-        None,
-        None,
-        False,
-    ),
-    (
-        "max_y_axis",
-        int,
-        0,
-        None,
-        True,
-    ),
-    (
-        "n-days",
-        int,
-        1,
-        30,
-        True,
-    ),
-    (
-        "recovered",
-        int,
-        0,
-        None,
-        True,
-    ),
-    (
-        "relative-contact-rate",
-        float,
-        0.0,
-        1.0,
-        True,
-    ),
-    (
-        "population",
-        int,
-        1,
-        None,
-        True,
-    ),
-    (
-        "ventilated_days",
-        int,
-        1,
-        None,
-        True,
-    ),
-    (
-        "ventilated_rate",
-        float,
-        0.0,
-        1.0,
-        True,
-    ),
-    (
-        "use_log_scale",
-        bool,
-        None,
-        None,
-        False
-    )
+    ("current_hospitalized", int, 0, None, True,),
+    ("current_date", cast_date, None, None, False,),
+    ("date_first_hospitalized", cast_date, None, None, False,),
+    ("doubling_time", float, 0.0, None, True,),
+    ("hospitalized_days", int, 1, None, True,),
+    ("hospitalized_rate", float, 0.00001, 1.0, True,),
+    ("icu_days", int, 1, None, True,),
+    ("icu_rate", float, 0.0, 1.0, True,),
+    ("market_share", float, 0.00001, 1.0, True,),
+    ("infectious_days", int, 0.0, None, True,),
+    ("mitigation_date", cast_date, None, None, False,),
+    ("max_y_axis", int, 0, None, True,),
+    ("n-days", int, 1, 30, True,),
+    ("recovered", int, 0, None, True,),
+    ("relative-contact-rate", float, 0.0, 1.0, True,),
+    ("population", int, 1, None, True,),
+    ("ventilated_days", int, 1, None, True,),
+    ("ventilated_rate", float, 0.0, 1.0, True,),
+    ("use_log_scale", bool, None, None, False),
 )
 
 
 def to_cli(name):
-    return "--" + name.replace('_', '-')
+    return "--" + name.replace("_", "-")
+
 
 class Parameters:
     """
@@ -321,17 +207,14 @@ class Parameters:
 
     @classmethod
     def parser(cls):
-        parser = ArgumentParser(
-            description=f"penn_chime: {VERSION} {CHANGE_DATE}")
+        parser = ArgumentParser(description=f"penn_chime: {VERSION} {CHANGE_DATE}")
 
         for name, cast, min_value, max_value, required in ARGS:
             arg = to_cli(name)
             if cast == bool:
                 # This argument is a command-line flag and does not need validation.
                 parser.add_argument(
-                    arg,
-                    action='store_true',
-                    help=HELP.get(name),
+                    arg, action="store_true", help=HELP.get(name),
                 )
             else:
                 # Use a custom validator for any arguments that take in values.
@@ -343,11 +226,7 @@ class Parameters:
         return parser
 
     @classmethod
-    def create(
-        cls,
-        env: Dict[str, str],
-        argv: List[str],
-    ) -> Parameters:
+    def create(cls, env: Dict[str, str], argv: List[str],) -> Parameters:
         parser = cls.parser()
         a = parser.parse_args(argv)
 
@@ -355,32 +234,25 @@ class Parameters:
             a.parameters = env.get("PARAMETERS")
 
         if a.parameters is not None:
-            logger.info('Using file: %s', a.parameters)
-            with open(a.parameters, 'r') as fin:
+            logger.info("Using file: %s", a.parameters)
+            with open(a.parameters, "r") as fin:
                 parser.parse_args(fin.read().split(), a)
 
         del a.parameters
 
-        Positive(key='hospitalized_days', value=a.hospitalized_days)
-        Positive(key='icu_days', value=a.icu_days)
-        Positive(key='ventilated_days', value=a.ventilated_days)
+        Positive(key="hospitalized_days", value=a.hospitalized_days)
+        Positive(key="icu_days", value=a.icu_days)
+        Positive(key="ventilated_days", value=a.ventilated_days)
 
-        Rate(key='hospitalized_rate', value=a.hospitalized_rate)
-        Rate(key='icu_rate', value=a.icu_rate)
-        Rate(key='ventilated_rate', value=a.ventilated_rate)
+        Rate(key="hospitalized_rate", value=a.hospitalized_rate)
+        Rate(key="icu_rate", value=a.icu_rate)
+        Rate(key="ventilated_rate", value=a.ventilated_rate)
 
         hospitalized = Disposition.create(
-            days=a.hospitalized_days,
-            rate=a.hospitalized_rate,
+            days=a.hospitalized_days, rate=a.hospitalized_rate,
         )
-        icu = Disposition.create(
-            days=a.icu_days,
-            rate=a.icu_rate,
-        )
-        ventilated = Disposition.create(
-            days=a.ventilated_days,
-            rate=a.ventilated_rate,
-        )
+        icu = Disposition.create(days=a.icu_days, rate=a.icu_rate,)
+        ventilated = Disposition.create(days=a.ventilated_days, rate=a.ventilated_rate,)
 
         del a.hospitalized_days
         del a.hospitalized_rate
@@ -390,10 +262,7 @@ class Parameters:
         del a.ventilated_rate
 
         return cls(
-            hospitalized=hospitalized,
-            icu=icu,
-            ventilated=ventilated,
-            **vars(a),
+            hospitalized=hospitalized, icu=icu, ventilated=ventilated, **vars(a),
         )
 
     def __init__(self, **kwargs):
@@ -430,11 +299,12 @@ class Parameters:
                 validator(key=key, value=value)
             except TypeError as ve:
                 raise ValueError(
-                    f"For parameter '{key}', with value '{value}', validation returned error \"{ve}\"")
+                    f"For parameter '{key}', with value '{value}', validation returned error \"{ve}\""
+                )
             setattr(self, key, value)
 
         if self.region is None and self.population is None:
-            raise AssertionError('population or regions must be provided.')
+            raise AssertionError("population or regions must be provided.")
 
         if self.current_date is None:
             self.current_date = today
@@ -442,8 +312,8 @@ class Parameters:
         if self.mitigation_date is None:
             self.mitigation_date = today
 
-        Date(key='current_date', value=self.current_date)
-        Date(key='mitigation_date', value=self.mitigation_date)
+        Date(key="current_date", value=self.current_date)
+        Date(key="mitigation_date", value=self.mitigation_date)
 
         self.labels = {
             "admits_hospitalized": i18n.t("admits_hospitalized"),
@@ -454,9 +324,9 @@ class Parameters:
             "census_ventilated": i18n.t("census_ventilated"),
             "day": i18n.t("day"),
             "date": i18n.t("date"),
-            "susceptible" :i18n.t("susceptible"),
+            "susceptible": i18n.t("susceptible"),
             "infected": i18n.t("infected"),
-            "recovered": i18n.t("recovered")
+            "recovered": i18n.t("recovered"),
         }
 
         self.dispositions = {
