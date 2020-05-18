@@ -42,7 +42,4 @@ def from_object(context: str):
     if context in envs.keys():
         return envs[context]
     else:
-        raise ValueError('Please select a valid environment')
-        
-
-
+        raise ValueError("Please select a valid environment")

@@ -1,4 +1,4 @@
-"""components/intro
+"""component/intro
 initializes the leading text as of right now
 
 currently both classes handle control and view this should be separated
@@ -15,6 +15,7 @@ from chime_dash.app.components.base import Component
 class Intro(Component):
     """
     """
+
     localization_file = "intro.yml"
 
     def get_html(self) -> List[ComponentMeta]:  # pylint: disable=W0613
@@ -38,21 +39,29 @@ class Intro(Component):
                 else intro["mitigation-rt-more-than-equal-1"]
             )
 
-            result = intro["description-total-infection"].format(
-                total_infections=model.infected,
-                current_hosp=pars.current_hospitalized,
-                hosp_rate=pars.hospitalized.rate,
-                S=pars.population,
-                market_share=pars.market_share
-            ) + "\n\n" + infected_population_warning_str + "\n\n" + intro["description-doubling-time"].format(
-                doubling_time=pars.doubling_time,
-                recovery_days=pars.infectious_days,
-                r_naught=model.r_naught,
-                daily_growth=model.daily_growth_rate * 100.0
-            ) + "\n\n" + mitigation_rt_str.format(
-                relative_contact_rate=pars.relative_contact_rate,
-                doubling_time_t=model.doubling_time_t,
-                r_t=model.r_t,
-                daily_growth_t=model.daily_growth_rate_t * 100.0
+            result = (
+                intro["description-total-infection"].format(
+                    total_infections=model.infected,
+                    current_hosp=pars.current_hospitalized,
+                    hosp_rate=pars.hospitalized.rate,
+                    S=pars.population,
+                    market_share=pars.market_share,
+                )
+                + "\n\n"
+                + infected_population_warning_str
+                + "\n\n"
+                + intro["description-doubling-time"].format(
+                    doubling_time=pars.doubling_time,
+                    recovery_days=pars.infectious_days,
+                    r_naught=model.r_naught,
+                    daily_growth=model.daily_growth_rate * 100.0,
+                )
+                + "\n\n"
+                + mitigation_rt_str.format(
+                    relative_contact_rate=pars.relative_contact_rate,
+                    doubling_time_t=model.doubling_time_t,
+                    r_t=model.r_t,
+                    daily_growth_t=model.daily_growth_rate_t * 100.0,
+                )
             )
         return [result]

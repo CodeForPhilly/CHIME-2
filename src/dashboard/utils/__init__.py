@@ -61,23 +61,15 @@ def parameters_deserializer(p_json: str):
 
     dates = {
         key: parse_date(values[key]).date() if values[key] else None
-        for key in (
-            "current_date",
-            "date_first_hospitalized",
-            "mitigation_date",
-        )
+        for key in ("current_date", "date_first_hospitalized", "mitigation_date",)
     }
     return Parameters(
         current_date=dates["current_date"],
         current_hospitalized=values["current_hospitalized"],
         hospitalized=Disposition.create(
-            days=values["hospitalized"][0],
-            rate=values["hospitalized"][1],
+            days=values["hospitalized"][0], rate=values["hospitalized"][1],
         ),
-        icu=Disposition.create(
-            days=values["icu"][0],
-            rate=values["icu"][1],
-        ),
+        icu=Disposition.create(days=values["icu"][0], rate=values["icu"][1],),
         infectious_days=values["infectious_days"],
         date_first_hospitalized=dates["date_first_hospitalized"],
         doubling_time=values["doubling_time"],
@@ -89,8 +81,7 @@ def parameters_deserializer(p_json: str):
         region=values["region"],
         relative_contact_rate=values["relative_contact_rate"],
         ventilated=Disposition.create(
-            days=values["ventilated"][0],
-            rate=values["ventilated"][1],
+            days=values["ventilated"][0], rate=values["ventilated"][1],
         ),
     )
 

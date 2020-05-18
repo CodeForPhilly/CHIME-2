@@ -24,9 +24,5 @@ def plot_dataframe(dataframe: DataFrame) -> Dict[str, Any]:
             }
             for col in dataframe.columns
         ],
-        "layout": {
-            "xaxis": {},
-            "yaxis": {},
-            "legend": {"orientation": "h"},
-        },
+        "layout": {"xaxis": {}, "yaxis": {}, "legend": {"orientation": "h"},},
     }

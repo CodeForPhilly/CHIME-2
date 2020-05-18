@@ -1,8 +1,8 @@
-"""app/components/base
+"""app/component/base
 
-Abstract base class for components
+Abstract base class for component
 
-#! candidate for moving into utils/components
+#! candidate for moving into utils/component
 """
 from typing import List, Dict, Union
 
@@ -13,7 +13,10 @@ from dash_html_components import Div
 
 from penn_chime.model.parameters import Parameters
 
-from chime_dash.app.utils.templates import read_localization_yml, read_localization_markdown
+from chime_dash.app.utils.templates import (
+    read_localization_yml,
+    read_localization_markdown,
+)
 
 
 class Component(ABC):
@@ -40,7 +43,7 @@ class Component(ABC):
     def get_html(self) -> List[ComponentMeta]:  # pylint: disable=R0201
         """Function which is called to render html elements.
 
-        Should return a list of Dash components. Must be overwritten.
+        Should return a list of Dash component. Must be overwritten.
         """
         return Div("")
 

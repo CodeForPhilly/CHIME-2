@@ -1,16 +1,14 @@
-"""components/navbar
+"""component/navbar
 Navigation bar view
 """
 from typing import List
 
 import dash_bootstrap_components as dbc
 import dash_html_components as html
+from chime_dash.app.components.menu import Menu
 from dash.development.base_component import ComponentMeta
 
-from chime_dash.app.components.base import Component
-from chime_dash.app.components.menu import Menu
-
-from penn_chime.model.parameters import Parameters
+from src.chime2.app.main.dashboard.component._base import Component
 
 
 class Navbar(Component):
@@ -44,15 +42,18 @@ class Navbar(Component):
                     html.Div(
                         className="flex-fill",
                         children=dbc.Container(
-                            children=[dbc.NavbarBrand(
-                                children=html.H1(
-                                    style={"font": "inherit", "margin": "0"},
-                                    children="COVID-19 Hospital Impact Model for Epidemics (CHIME)"
-                                ),
-                                href="/"
-                            )] + self.menu.html
+                            children=[
+                                dbc.NavbarBrand(
+                                    children=html.H1(
+                                        style={"font": "inherit", "margin": "0"},
+                                        children="COVID-19 Hospital Impact Model for Epidemics (CHIME)",
+                                    ),
+                                    href="/",
+                                )
+                            ]
+                            + self.menu.html
                         ),
-                    )
+                    ),
                 ],
             ),
             dark=True,

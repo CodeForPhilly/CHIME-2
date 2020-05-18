@@ -13,5 +13,3 @@ plotting            graphs / charts
 #! logic for updating text should be moved here
 """
 from . import plotting
-
-

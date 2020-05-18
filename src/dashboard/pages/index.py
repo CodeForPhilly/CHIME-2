@@ -17,6 +17,7 @@ from chime_dash.app.services.callbacks import IndexCallbacks
 class Index(Page):
     """
     """
+
     callbacks_cls = IndexCallbacks
 
     def __init__(self, language, defaults):
@@ -35,18 +36,15 @@ class Index(Page):
         """
         content = Main(
             className="py-5",
-            style={
-                "marginLeft": "320px",
-                "marginTop": "56px"
-            },
-            children=[Container(
-                children=self.components["header"].html
-                + self.components["intro"].html
-            )]
+            style={"marginLeft": "320px", "marginTop": "56px"},
+            children=[
+                Container(
+                    children=self.components["header"].html
+                    + self.components["intro"].html
+                )
+            ]
             + self.components["visualizations"].html
-            + [Container(
-                children=self.components["footer"].html
-            )],
+            + [Container(children=self.components["footer"].html)],
         )
 
         return [content]

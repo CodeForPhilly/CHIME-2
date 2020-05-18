@@ -1,8 +1,8 @@
-"""app/components
+"""app/pages
 
-reusable components that desc a bit of UI - nothing should be defined here only initialized
+page layout controlled here - nothing should be defined here only initialized
 
-for pages definitions see -> app/pages
+for component definitions see -> app/component
 for core logic see --> app/services
 for utility classes and functions see --> utils
 

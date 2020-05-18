@@ -6,15 +6,16 @@ from functools import lru_cache
 
 
 class ChimeCallback:
-    def __init__(self,
-                 changed_elements: Mapping,
-                 callback_fn: Callable,
-                 dom_updates: Mapping = None,
-                 dom_states: Mapping = None,
-                 stores: Iterable = None,
-                 states: Mapping = None,
-                 memoize: bool = True
-                 ):
+    def __init__(
+        self,
+        changed_elements: Mapping,
+        callback_fn: Callable,
+        dom_updates: Mapping = None,
+        dom_states: Mapping = None,
+        stores: Iterable = None,
+        states: Mapping = None,
+        memoize: bool = True,
+    ):
         self.inputs = [
             Input(component_id=component_id, component_property=component_property)
             for component_id, component_property in changed_elements.items()
@@ -42,19 +43,26 @@ class ChimeCallback:
             )
             if states:
                 self.states.extend(
-                    State(component_id=component_id, component_property=component_property)
+                    State(
+                        component_id=component_id, component_property=component_property
+                    )
                     for component_id, component_property in states.items()
                 )
 
     def wrap(self, app: Dash):
-        print(f'Registering callback: \nOutputs: \n{self.outputs}, \nInputs:\n{self.inputs}, \nStore: \n{self.stores} \nUsing: {self.callback_fn}\n\n')
+        print(
+            f"Registering callback: \nOutputs: \n{self.outputs}, \nInputs:\n{self.inputs}, \nStore: \n{self.stores} \nUsing: {self.callback_fn}\n\n"
+        )
         if self.memoize:
+
             @lru_cache(maxsize=32)
             @app.callback(self.outputs, self.inputs, self.states)
             def callback_wrapper(*args, **kwargs):
                 print(str(self.callback_fn))
                 return self.callback_fn(*args, **kwargs)
+
         else:
+
             @app.callback(self.outputs, self.inputs, self.states)
             def callback_wrapper(*args, **kwargs):
                 return self.callback_fn(*args, **kwargs)

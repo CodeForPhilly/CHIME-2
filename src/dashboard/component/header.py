@@ -19,8 +19,4 @@ class Header(Component):
         """Initializes the header dash html
         """
         content = self.content
-        return [Div(
-            children=[
-                Markdown(content["description"])
-          ]
-        )]
+        return [Div(children=[Markdown(content["description"])])]

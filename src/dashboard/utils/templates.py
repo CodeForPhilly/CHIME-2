@@ -32,11 +32,7 @@ HEADER_STYLE = {
     "margin-bottom": "1rem",
 }
 
-LINE_STYLE = {
-    "width": "30%",
-    "text-align": "center",
-    "color": "#cccccc"
-}
+LINE_STYLE = {"width": "30%", "text-align": "center", "color": "#cccccc"}
 
 
 def read_localization_yml(file: str, language: str) -> Dict[str, Any]:
@@ -148,11 +144,11 @@ def create_number_input(
             idx, defaults, min_val=data.get("min", None), max_val=data.get("max", None)
         )
     return FormGroup(
-        id=f'group_{idx}',
+        id=f"group_{idx}",
         children=[
             Label(html_for=idx, children=content[idx], style=LABEL_STYLE),
             Input(id=idx, debounce=debounce, **input_kwargs),
-        ]
+        ],
     )
 
 
@@ -163,8 +159,10 @@ def create_header(idx: str, content: Dict[str, str]):
 
     return H4(id=idx, children=content[idx], style=HEADER_STYLE)
 
+
 def create_line_break(idx: str):
     return Hr(id=idx, style=LINE_STYLE)
+
 
 def create_date_input(
     idx: str, data: Dict[str, Any], content: Dict[str, str], defaults: Parameters
@@ -185,24 +183,24 @@ def create_date_input(
             "initial_visible_month"
         ] = _get_default_values(idx, defaults)
 
-    if 'style' in input_kwargs:
-        style = {'style': input_kwargs.pop('style')}
+    if "style" in input_kwargs:
+        style = {"style": input_kwargs.pop("style")}
     else:
         style = {}
 
     return FormGroup(
-        id=f'group_{idx}',
+        id=f"group_{idx}",
         **style,
         children=[
             Label(html_for=idx, children=content[idx], style=LABEL_STYLE),
             DatePickerSingle(
                 className="form-control",
                 day_size=32,
-                display_format='YYYY-MM-DD',
+                display_format="YYYY-MM-DD",
                 id=idx,
-                **input_kwargs
+                **input_kwargs,
             ),
-        ]
+        ],
     )
 
 
@@ -215,9 +213,7 @@ def create_switch_input(idx: str, data: Dict[str, Any], content: Dict[str, str])
         content: Localization text
         defaults: Parameters to infer defaults
     """
-    return daq.BooleanSwitch(
-        id=idx, on=False, label=content[idx]
-    )
+    return daq.BooleanSwitch(id=idx, on=False, label=content[idx])
 
 
 def _get_default_values(

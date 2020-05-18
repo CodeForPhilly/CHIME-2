@@ -1,9 +1,9 @@
-"""Combines all components
+"""Combines all component
 
-The `sidebar` component combines all the inputs while other components potentially
+The `sidebar` component combines all the inputs while other component potentially
 have callbacks.
 
-To add or remove components, adjust the `setup`.
+To add or remove component, adjust the `setup`.
 """
 from collections import OrderedDict
 
@@ -18,13 +18,15 @@ from chime_dash.app.pages.sidebar import Sidebar
 from chime_dash.app.utils import singleton
 from chime_dash.app.services.callbacks import RootCallbacks
 
+
 @singleton
 class Root(Page):
     """
     """
+
     external_stylesheets = [
         BOOTSTRAP,
-        'https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;1,400;1,600&display=swap',
+        "https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;1,400;1,600&display=swap",
     ]
     callbacks_cls = RootCallbacks
 
@@ -40,17 +42,18 @@ class Root(Page):
         super().__init__(language, defaults)
 
     def get_html(self):
-        """Glues individual setup components together
+        """Glues individual setup component together
         """
         return Div(
             className="app",
-            children=self.components["navbar"].html + [
+            children=self.components["navbar"].html
+            + [
                 Div(
                     className="app-content",
                     children=self.components["sidebar"].html
-                             + self.components["index"].html
+                    + self.components["index"].html,
                 ),
                 Store(id="root-store"),
-                Location(id='location')
-            ]
+                Location(id="location"),
+            ],
         )
