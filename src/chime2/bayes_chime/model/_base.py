@@ -18,18 +18,12 @@ class ModelError(AttributeError, NameError, KeyError):
 
 
 class CompartmentalModel(object):
-    """Base class for the various models used by the CHIME
-     simulation."""
-
-    _valid_parameters: Dict[str, Any] = {}
-    _compartments: List[str] = []  # TODO : Compartments as objects
+    """Base class for the various models used by the CHIME simulation."""
 
     @abstractmethod
-    def fit(self, **parameters: Dict[str, Any]):
-        """Fit the model"""
+    def fit(self) -> None:
+        """Fit the model to the parameters"""
 
     @abstractmethod
     def simulate(self):
         """Execute a single model step"""
-
-

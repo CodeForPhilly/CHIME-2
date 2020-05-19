@@ -1,24 +1,24 @@
 """parameters/_base.
 """
 from collections import namedtuple, OrderedDict
-from typing import Any, Callable, List, Dict, NamedTuple
+from typing import Any, Callable, List, Dict, NamedTuple, Type, Tuple
 
-param_args = [
+param_args =[
     ("key", str),
     ("dtype", Any),
     ("default_value", Any),
     ("distribution", str),
     ("validators", List[Callable]),
-    ("description", str),
-]
+    ("description", str)]
+
 # Holds a single parameter's metadata
-RegisteredParameter = NamedTuple("RegisteredParameter", param_args)
+RegisteredParameter: NamedTuple[str, Tuple[str, Any]] = NamedTuple("RegisteredParameter", param_args)
 
 # Stores metadata for all configured parameters
 _parameter_registry: Dict[str, RegisteredParameter] = {}
 # Reserved keys for special use
 _reserved_keys: List[str] = ["all"]
-# Temporary holder for key value pair of parameter configuration
+# The temporary holder for key value pair of parameter configuration
 _param_config: Dict[str, Any] = {}
 
 
@@ -97,7 +97,7 @@ class Parameters:
     which makes all parameters accessible through dot notation.
 
     """
-    _cache = {}
+    _cache: List[Any] = []
     _log_file: str = ""
 
     _dt_params = ['sim_start', 'sim_stop']
@@ -130,6 +130,12 @@ class Parameters:
 
 
 def build_dt_series(start_date: str, end_date: str):
+    """
+    Builds a datetime series
+    :param start_date:
+    :param end_date:
+    :return:
+    """
     s = start_date.split('-')
     if (len(s[0]) != 4) or (len(s[1]) + len(s[2]) != 4):
         raise ValueError('Dates must be formatted YYYY-MM-DD')
@@ -146,7 +152,7 @@ class Parameter(object):
 
     Base class for all parameters. Parameter subclasses primary purpose
     is to facilitate the decoupling of model and parameter states. Metadata
-    is reported to the parameter registry upon class definition via
+    reports to the parameter registry upon class definition via
     overriding the __init_subclass__ built-in method. Upon instantiation
     a parameter subclass can then self-validate any arguments passed to
     it during instantiation. Parameter subclasses do not store the current

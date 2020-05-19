@@ -151,10 +151,10 @@ description = "The AWS SDK for Python"
 name = "boto3"
 optional = false
 python-versions = "*"
-version = "1.13.11"
+version = "1.13.12"
 
 [package.dependencies]
-botocore = ">=1.16.11,<1.17.0"
+botocore = ">=1.16.12,<1.17.0"
 jmespath = ">=0.7.1,<1.0.0"
 s3transfer = ">=0.3.0,<0.4.0"
 
@@ -164,7 +164,7 @@ description = "Low-level, data-driven core of boto 3."
 name = "botocore"
 optional = false
 python-versions = "*"
-version = "1.16.11"
+version = "1.16.12"
 
 [package.dependencies]
 docutils = ">=0.10,<0.16"
@@ -232,7 +232,7 @@ description = "Hosted coverage reports for GitHub, Bitbucket and Gitlab"
 name = "codecov"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
-version = "2.0.22"
+version = "2.1.0"
 
 [package.dependencies]
 coverage = "*"
@@ -624,6 +624,17 @@ PyJWT = ">=1.4.0,<1.5.0"
 
 [[package]]
 category = "main"
+description = "User session management for Flask"
+name = "flask-login"
+optional = false
+python-versions = "*"
+version = "0.5.0"
+
+[package.dependencies]
+Flask = "*"
+
+[[package]]
+category = "main"
 description = "SQLAlchemy database migrations for Flask applications using Alembic"
 name = "flask-migrate"
 optional = false
@@ -715,7 +726,7 @@ description = "A library for property-based testing"
 name = "hypothesis"
 optional = false
 python-versions = ">=3.5.2"
-version = "5.14.0"
+version = "5.15.0"
 
 [package.dependencies]
 attrs = ">=19.2.0"
@@ -1002,7 +1013,7 @@ description = "Core utilities for Python packages"
 name = "packaging"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
-version = "20.3"
+version = "20.4"
 
 [package.dependencies]
 pyparsing = ">=2.0.2"
@@ -1739,7 +1750,7 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["jaraco.itertools", "func-timeout"]
 
 [metadata]
-content-hash = "0fecf639e462627997675ddf6d511b18fd4d1c55fa82471de6ffa9ecf035955d"
+content-hash = "5360a5cb0a274132275354d676dd707b2406e188c74e9895ca56906b2519fc32"
 python-versions = "^3.6.9"
 
 [metadata.files]
@@ -1811,12 +1822,12 @@ black = [
     {file = "black-19.10b0.tar.gz", hash = "sha256:c2edb73a08e9e0e6f65a0e6af18b059b8b1cdd5bef997d7a0b181df93dc81539"},
 ]
 boto3 = [
-    {file = "boto3-1.13.11-py2.py3-none-any.whl", hash = "sha256:fe7fa987472d8247812add0bc1c00aa2e6631589aa601b01d075d8c595c2292f"},
-    {file = "boto3-1.13.11.tar.gz", hash = "sha256:a7c5c7251b76336e697ccf368f125720e1947d58b218c228b61b5b654187fe4e"},
+    {file = "boto3-1.13.12-py2.py3-none-any.whl", hash = "sha256:bf1346365829525dfd8dbbafb5dbfd7383ad0872370301643d65c6190f7f5813"},
+    {file = "boto3-1.13.12.tar.gz", hash = "sha256:c46f31f085de660b95162c66057bae9ebb1658a245c9210162cee9671b0ff678"},
 ]
 botocore = [
-    {file = "botocore-1.16.11-py2.py3-none-any.whl", hash = "sha256:e7fd44235f3e197558ea8f85f078a6bd05805eea90ed2a00b5cb2646ac800157"},
-    {file = "botocore-1.16.11.tar.gz", hash = "sha256:b82083f1ba65624017d53fa2d2a44aa801ea3da0948fba56ccf4d29a88ef0b71"},
+    {file = "botocore-1.16.12-py2.py3-none-any.whl", hash = "sha256:446c9279105f596765ece99b61656f76c5d5003556cd8301dd506d4f70e18940"},
+    {file = "botocore-1.16.12.tar.gz", hash = "sha256:b75a5dc97f9ac795139ea2c651c07a8522e31dc280db17243e2b20e5c210547b"},
 ]
 brotli = [
     {file = "Brotli-1.0.7-cp27-cp27m-macosx_10_6_intel.macosx_10_9_intel.macosx_10_9_x86_64.macosx_10_10_intel.macosx_10_10_x86_64.whl", hash = "sha256:50dd9ad2a2bb12da4e9002a438672d182f98e546e99952de80280a1e1729664f"},
@@ -1900,8 +1911,7 @@ click = [
     {file = "click-7.1.2.tar.gz", hash = "sha256:d2b5255c7c6349bc1bd1e59e08cd12acbbd63ce649f2588755783aa94dfb6b1a"},
 ]
 codecov = [
-    {file = "codecov-2.0.22-py2.py3-none-any.whl", hash = "sha256:09fb045eb044a619cd2b9dacd7789ae8e322cb7f18196378579fd8d883e6b665"},
-    {file = "codecov-2.0.22.tar.gz", hash = "sha256:aeeefa3a03cac8a78e4f988e935b51a4689bb1f17f20d4e827807ee11135f845"},
+    {file = "codecov-2.1.0.tar.gz", hash = "sha256:43ad6cb3e7de073d911aa3ab6a754db88d270fcb0e0d8e2062b964098a51d69b"},
 ]
 colorama = [
     {file = "colorama-0.4.3-py2.py3-none-any.whl", hash = "sha256:7d73d2a99753107a36ac6b455ee49046802e59d9d076ef8e47b61499fa29afff"},
@@ -2050,6 +2060,10 @@ flask-cors = [
 flask-jwt = [
     {file = "Flask-JWT-0.3.2.tar.gz", hash = "sha256:49c0672fbde0f1cd3374bd834918d28956e3c521c7e00089cdc5380d323bd0ad"},
 ]
+flask-login = [
+    {file = "Flask-Login-0.5.0.tar.gz", hash = "sha256:6d33aef15b5bcead780acc339464aae8a6e28f13c90d8b1cf9de8b549d1c0b4b"},
+    {file = "Flask_Login-0.5.0-py2.py3-none-any.whl", hash = "sha256:7451b5001e17837ba58945aead261ba425fdf7b4f0448777e597ddab39f4fba0"},
+]
 flask-migrate = [
     {file = "Flask-Migrate-2.5.3.tar.gz", hash = "sha256:a69d508c2e09d289f6e55a417b3b8c7bfe70e640f53d2d9deb0d056a384f37ee"},
     {file = "Flask_Migrate-2.5.3-py2.py3-none-any.whl", hash = "sha256:4dc4a5cce8cbbb06b8dc963fd86cf8136bd7d875aabe2d840302ea739b243732"},
@@ -2077,8 +2091,8 @@ gitpython = [
     {file = "GitPython-3.1.2.tar.gz", hash = "sha256:864a47472548f3ba716ca202e034c1900f197c0fb3a08f641c20c3cafd15ed94"},
 ]
 hypothesis = [
-    {file = "hypothesis-5.14.0-py3-none-any.whl", hash = "sha256:ca58d0d6b37b10c9ae5cfaa97fb9cb8b033f0cbacb19dfea3fed79a7d57cfcfd"},
-    {file = "hypothesis-5.14.0.tar.gz", hash = "sha256:0c00645c63341f035951cade156112d7c4d3c650c5a54671d104dc8acd41a350"},
+    {file = "hypothesis-5.15.0-py3-none-any.whl", hash = "sha256:f1b2079a20c63b1d1dc905052f67fbc42eb33b71d33d5dc3e5007dc49b61c953"},
+    {file = "hypothesis-5.15.0.tar.gz", hash = "sha256:91d062c37a74f247214b64a00363901554e9af3493f471de085d65dc6607b5ca"},
 ]
 identify = [
     {file = "identify-1.4.15-py2.py3-none-any.whl", hash = "sha256:88ed90632023e52a6495749c6732e61e08ec9f4f04e95484a5c37b9caf40283c"},
@@ -2226,8 +2240,8 @@ numpy = [
     {file = "numpy-1.18.4.zip", hash = "sha256:bbcc85aaf4cd84ba057decaead058f43191cc0e30d6bc5d44fe336dc3d3f4509"},
 ]
 packaging = [
-    {file = "packaging-20.3-py2.py3-none-any.whl", hash = "sha256:82f77b9bee21c1bafbf35a84905d604d5d1223801d639cf3ed140bd651c08752"},
-    {file = "packaging-20.3.tar.gz", hash = "sha256:3c292b474fda1671ec57d46d739d072bfd495a4f51ad01a055121d81e952b7a3"},
+    {file = "packaging-20.4-py2.py3-none-any.whl", hash = "sha256:998416ba6962ae7fbd6596850b80e17859a5753ba17c32284f67bfff33784181"},
+    {file = "packaging-20.4.tar.gz", hash = "sha256:4357f74f47b9c12db93624a82154e9b120fa8293699949152b22065d556079f8"},
 ]
 pandas = [
     {file = "pandas-1.0.3-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:d234bcf669e8b4d6cbcd99e3ce7a8918414520aeb113e2a81aeb02d0a533d7f7"},

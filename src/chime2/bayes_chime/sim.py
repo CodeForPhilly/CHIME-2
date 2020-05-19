@@ -34,3 +34,34 @@ class BayesianCHIME(object):
         self.model = model
         self._dist = distributions
 
+
+
+
+
+
+
+
+
+
+
+class SIR:
+
+    def __init__(self
+                 infectious_disease,
+                 region,
+                 ):
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

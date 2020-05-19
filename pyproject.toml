@@ -20,6 +20,7 @@ flask-restx = "^0.2.0"
 flask-sqlalchemy = "^2.4.1"
 flask-bcrypt = "^0.7.1"
 flask-cors = "^3.0.8"
+flask-login = "^0.5.0"
 
 [tool.poetry.dev-dependencies]
 black = "^19.10b0"
