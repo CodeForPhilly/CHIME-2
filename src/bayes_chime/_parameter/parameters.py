@@ -3,16 +3,19 @@
 from collections import namedtuple, OrderedDict
 from typing import Any, Callable, List, Dict, NamedTuple, Type, Tuple
 
-param_args =[
+param_args = [
     ("key", str),
     ("dtype", Any),
     ("default_value", Any),
     ("distribution", str),
     ("validators", List[Callable]),
-    ("description", str)]
+    ("description", str),
+]
 
 # Holds a single parameter's metadata
-RegisteredParameter: NamedTuple[str, Tuple[str, Any]] = NamedTuple("RegisteredParameter", param_args)
+RegisteredParameter: NamedTuple[str, Tuple[str, Any]] = NamedTuple(
+    "RegisteredParameter", param_args
+)
 
 # Stores metadata for all configured parameters
 _parameter_registry: Dict[str, RegisteredParameter] = {}
@@ -97,12 +100,18 @@ class Parameters:
     which makes all parameters accessible through dot notation.
 
     """
+
     _cache: List[Any] = []
     _log_file: str = ""
 
-    _dt_params = ['sim_start', 'sim_stop']
+    _dt_params = ["sim_start", "sim_stop"]
     _epidemiological_params = [
-        'recovery_days', 'initial_doubling_time', 'hospitalized_rate', 'icu_rate', 'vent_rate']
+        "recovery_days",
+        "initial_doubling_time",
+        "hospitalized_rate",
+        "icu_rate",
+        "vent_rate",
+    ]
 
     def __init__(self, logging: bool = False):
         self.log = logging
@@ -136,12 +145,12 @@ def build_dt_series(start_date: str, end_date: str):
     :param end_date:
     :return:
     """
-    s = start_date.split('-')
+    s = start_date.split("-")
     if (len(s[0]) != 4) or (len(s[1]) + len(s[2]) != 4):
-        raise ValueError('Dates must be formatted YYYY-MM-DD')
-    e = end_date.split('-')
+        raise ValueError("Dates must be formatted YYYY-MM-DD")
+    e = end_date.split("-")
     if (len(e[0]) != 4) or (len(e[1]) + len(e[2]) != 4):
-        raise ValueError('Dates must be formatted YYYY-MM-DD')
+        raise ValueError("Dates must be formatted YYYY-MM-DD")
     return
 
 

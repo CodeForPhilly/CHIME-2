@@ -7,6 +7,32 @@ Simulation
 TODO : Document
 
 """
+import datetime as dt
+
+from .model.base import ModelError
+from .model.sir import SIR
+from .model.seir import SEIR
+
+import numpy as np
+
+
+def _build_dt_index(parameters: Dict[str]) -> np.ndarray:
+    """
+    Builds an index from a start date and stop date
+    :param start:
+        Starting date.
+    :param stop:
+        Ending date.
+    :return:
+        Datetime index as a numpy n dimensional array.
+    """
+    start = parameters["start_date"]
+    stop = parameters["stop_date"]
+
+    if start > stop:
+        raise ModelError("Start date must be before stop date")
+    dt_len = abs((start - stop).days)
+    return np.arange(dt_len, dtype=np.int16)
 
 
 class BayesianCHIME(object):
@@ -24,44 +50,11 @@ class BayesianCHIME(object):
     distribution of likely scenarios.
     """
 
-    def __init__(
-        self,
-        model: str = "SIR",
-        # Setting to true enforces the normal extension
-        distributions: str = "normal",
-        #
-    ) -> None:
-        self.model = model
-        self._dist = distributions
-
-
-
-
-
-
-
-
-
-
-
-class SIR:
-
-    def __init__(self
-                 infectious_disease,
-                 region,
-                 ):
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    # def __init__(
+    #     self,
+    #     model: str = "SIR",
+    #     # Setting to true enforces the normal extension
+    #     distributions: str = "normal",
+    #     #
+    # ) -> None:
 

@@ -14,4 +14,3 @@ from ._base import CompartmentalModel
 
 class SEIR(CompartmentalModel):
     """"""
-

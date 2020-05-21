@@ -38,9 +38,11 @@ from dash_bootstrap_components.themes import BOOTSTRAP
 
 FlaskServer = NewType("FlaskServer", object)
 
-_google_stylesheet = ("https://fonts.googleapis.com/",
-                      "css2?family=Open+Sans:ital,wght@0,400;",
-                      "0,600;1,400;1,600&display=swap")
+_google_stylesheet = (
+    "https://fonts.googleapis.com/",
+    "css2?family=Open+Sans:ital,wght@0,400;",
+    "0,600;1,400;1,600&display=swap",
+)
 
 
 class Dashboard(object):
@@ -50,13 +52,14 @@ class Dashboard(object):
     scripts: List[str] = []  # Additional JS files to load with app
 
     def __init__(self, server, url_path: str = "/dashboard/") -> None:
-        self._dash = Dash(__name__,
-                          server=server,
-                          assets_folder='assets',
-                          external_stylesheets=self.style,
-                          external_scripts=self.scripts,
-                          url_base_pathname=url_path,
-                          )
+        self._dash = Dash(
+            __name__,
+            server=server,
+            assets_folder="assets",
+            external_stylesheets=self.style,
+            external_scripts=self.scripts,
+            url_base_pathname=url_path,
+        )
 
     @property
     def build(self):

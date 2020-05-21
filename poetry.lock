@@ -151,10 +151,10 @@ description = "The AWS SDK for Python"
 name = "boto3"
 optional = false
 python-versions = "*"
-version = "1.13.12"
+version = "1.13.14"
 
 [package.dependencies]
-botocore = ">=1.16.12,<1.17.0"
+botocore = ">=1.16.14,<1.17.0"
 jmespath = ">=0.7.1,<1.0.0"
 s3transfer = ">=0.3.0,<0.4.0"
 
@@ -164,7 +164,7 @@ description = "Low-level, data-driven core of boto 3."
 name = "botocore"
 optional = false
 python-versions = "*"
-version = "1.16.12"
+version = "1.16.14"
 
 [package.dependencies]
 docutils = ">=0.10,<0.16"
@@ -232,7 +232,7 @@ description = "Hosted coverage reports for GitHub, Bitbucket and Gitlab"
 name = "codecov"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
-version = "2.1.0"
+version = "2.1.1"
 
 [package.dependencies]
 coverage = "*"
@@ -1592,15 +1592,15 @@ description = "tox is a generic virtualenv management and test command line tool
 name = "tox"
 optional = false
 python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,>=2.7"
-version = "3.15.0"
+version = "3.15.1"
 
 [package.dependencies]
 colorama = ">=0.4.1"
-filelock = ">=3.0.0,<4"
+filelock = ">=3.0.0"
 packaging = ">=14"
-pluggy = ">=0.12.0,<1"
-py = ">=1.4.17,<2"
-six = ">=1.14.0,<2"
+pluggy = ">=0.12.0"
+py = ">=1.4.17"
+six = ">=1.14.0"
 toml = ">=0.9.4"
 virtualenv = ">=16.0.0,<20.0.0 || >20.0.0,<20.0.1 || >20.0.1,<20.0.2 || >20.0.2,<20.0.3 || >20.0.3,<20.0.4 || >20.0.4,<20.0.5 || >20.0.5,<20.0.6 || >20.0.6,<20.0.7 || >20.0.7"
 
@@ -1609,8 +1609,8 @@ python = "<3.8"
 version = ">=0.12,<2"
 
 [package.extras]
-docs = ["sphinx (>=2.0.0,<3)", "towncrier (>=18.5.0)", "pygments-github-lexers (>=0.0.5)", "sphinxcontrib-autoprogram (>=0.1.5)"]
-testing = ["freezegun (>=0.3.11,<1)", "pathlib2 (>=2.3.3,<3)", "pytest (>=4.0.0,<6)", "pytest-cov (>=2.5.1,<3)", "pytest-mock (>=1.10.0,<2)", "pytest-xdist (>=1.22.2,<2)", "pytest-randomly (>=1.0.0,<4)", "flaky (>=3.4.0,<4)", "psutil (>=5.6.1,<6)"]
+docs = ["sphinx (>=2.0.0)", "towncrier (>=18.5.0)", "pygments-github-lexers (>=0.0.5)", "sphinxcontrib-autoprogram (>=0.1.5)"]
+testing = ["freezegun (>=0.3.11)", "pathlib2 (>=2.3.3)", "pytest (>=4.0.0)", "pytest-cov (>=2.5.1)", "pytest-mock (>=1.10.0)", "pytest-xdist (>=1.22.2)", "pytest-randomly (>=1.0.0)", "flaky (>=3.4.0)", "psutil (>=5.6.1)"]
 
 [[package]]
 category = "dev"
@@ -1663,7 +1663,7 @@ description = "Virtual Python Environment builder"
 name = "virtualenv"
 optional = false
 python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,>=2.7"
-version = "20.0.20"
+version = "20.0.21"
 
 [package.dependencies]
 appdirs = ">=1.4.3,<2"
@@ -1822,12 +1822,12 @@ black = [
     {file = "black-19.10b0.tar.gz", hash = "sha256:c2edb73a08e9e0e6f65a0e6af18b059b8b1cdd5bef997d7a0b181df93dc81539"},
 ]
 boto3 = [
-    {file = "boto3-1.13.12-py2.py3-none-any.whl", hash = "sha256:bf1346365829525dfd8dbbafb5dbfd7383ad0872370301643d65c6190f7f5813"},
-    {file = "boto3-1.13.12.tar.gz", hash = "sha256:c46f31f085de660b95162c66057bae9ebb1658a245c9210162cee9671b0ff678"},
+    {file = "boto3-1.13.14-py2.py3-none-any.whl", hash = "sha256:74d78ca0fd706f447a5f787d88214b298b213b1eddf2e8197051a0844df45146"},
+    {file = "boto3-1.13.14.tar.gz", hash = "sha256:703157e8f16c57133fde0082a2d8b99ca6d36120ca4479df1464df80dd148a87"},
 ]
 botocore = [
-    {file = "botocore-1.16.12-py2.py3-none-any.whl", hash = "sha256:446c9279105f596765ece99b61656f76c5d5003556cd8301dd506d4f70e18940"},
-    {file = "botocore-1.16.12.tar.gz", hash = "sha256:b75a5dc97f9ac795139ea2c651c07a8522e31dc280db17243e2b20e5c210547b"},
+    {file = "botocore-1.16.14-py2.py3-none-any.whl", hash = "sha256:c8a5647069f978ae664987ebdeffaef0eb2910e88a52fcc8d52c9eb014fed8cc"},
+    {file = "botocore-1.16.14.tar.gz", hash = "sha256:a8e4cb8ed5a7e59fce935c9a550ccf616e9d5a053d02c374832610c2e377ca92"},
 ]
 brotli = [
     {file = "Brotli-1.0.7-cp27-cp27m-macosx_10_6_intel.macosx_10_9_intel.macosx_10_9_x86_64.macosx_10_10_intel.macosx_10_10_x86_64.whl", hash = "sha256:50dd9ad2a2bb12da4e9002a438672d182f98e546e99952de80280a1e1729664f"},
@@ -1911,7 +1911,7 @@ click = [
     {file = "click-7.1.2.tar.gz", hash = "sha256:d2b5255c7c6349bc1bd1e59e08cd12acbbd63ce649f2588755783aa94dfb6b1a"},
 ]
 codecov = [
-    {file = "codecov-2.1.0.tar.gz", hash = "sha256:43ad6cb3e7de073d911aa3ab6a754db88d270fcb0e0d8e2062b964098a51d69b"},
+    {file = "codecov-2.1.1.tar.gz", hash = "sha256:520ab0ef447d695a9f71e83f9fa65eedbd2d6d1022ff88836e27b9eb82fbdc7b"},
 ]
 colorama = [
     {file = "colorama-0.4.3-py2.py3-none-any.whl", hash = "sha256:7d73d2a99753107a36ac6b455ee49046802e59d9d076ef8e47b61499fa29afff"},
@@ -2504,8 +2504,8 @@ toml = [
     {file = "toml-0.10.1.tar.gz", hash = "sha256:926b612be1e5ce0634a2ca03470f95169cf16f939018233a670519cb4ac58b0f"},
 ]
 tox = [
-    {file = "tox-3.15.0-py2.py3-none-any.whl", hash = "sha256:8d97bfaf70053ed3db56f57377288621f1bcc7621446d301927d18df93b1c4c3"},
-    {file = "tox-3.15.0.tar.gz", hash = "sha256:af09c19478e8fc7ce7555b3d802ddf601b82684b874812c5857f774b8aee1b67"},
+    {file = "tox-3.15.1-py2.py3-none-any.whl", hash = "sha256:322dfdf007d7d53323f767badcb068a5cfa7c44d8aabb698d131b28cf44e62c4"},
+    {file = "tox-3.15.1.tar.gz", hash = "sha256:8c9ad9b48659d291c5bc78bcabaa4d680d627687154b812fa52baedaa94f9f83"},
 ]
 traitlets = [
     {file = "traitlets-4.3.3-py2.py3-none-any.whl", hash = "sha256:70b4c6a1d9019d7b4f6846832288f86998aa3b9207c6821f3578a6a6a467fe44"},
@@ -2544,8 +2544,8 @@ urllib3 = [
     {file = "urllib3-1.25.9.tar.gz", hash = "sha256:3018294ebefce6572a474f0604c2021e33b3fd8006ecd11d62107a5d2a963527"},
 ]
 virtualenv = [
-    {file = "virtualenv-20.0.20-py2.py3-none-any.whl", hash = "sha256:b4c14d4d73a0c23db267095383c4276ef60e161f94fde0427f2f21a0132dde74"},
-    {file = "virtualenv-20.0.20.tar.gz", hash = "sha256:fd0e54dec8ac96c1c7c87daba85f0a59a7c37fe38748e154306ca21c73244637"},
+    {file = "virtualenv-20.0.21-py2.py3-none-any.whl", hash = "sha256:a730548b27366c5e6cbdf6f97406d861cccece2e22275e8e1a757aeff5e00c70"},
+    {file = "virtualenv-20.0.21.tar.gz", hash = "sha256:a116629d4e7f4d03433b8afa27f43deba09d48bc48f5ecefa4f015a178efb6cf"},
 ]
 wcwidth = [
     {file = "wcwidth-0.1.9-py2.py3-none-any.whl", hash = "sha256:cafe2186b3c009a04067022ce1dcd79cb38d8d65ee4f4791b8888d6599d1bbe1"},
