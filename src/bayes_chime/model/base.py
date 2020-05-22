@@ -33,16 +33,6 @@ def _get_valid_parameters(valid_parameters: Dict[str, List[str]]) -> List[str]:
     return parameter_list
 
 
-def _n_from_compartments(compartments: Dict[str, List[int]]) -> int:
-    """Return the combined sum of the items in the last index position"""
-    return sum(value[-1] for c, value in compartments.items())
-
-
-def str_to_datetime(pattern: str) -> dt.datetime:
-    """Cast an iso formatted string to datetime"""
-    return dt.datetime.strptime(pattern, "%Y-%m-%d")  # TODO : Move date format to user config
-
-
 class CompartmentalModel(object):
     """:class: CompartmentalModel
     ==================
@@ -80,36 +70,44 @@ class CompartmentalModel(object):
     """
 
     _idx: np.ndarray = None
-    _compartments: Dict[str, List[int]] = {}
-    _model_parameters: Dict[str, List[str]] = {}
+    _model_parameters: Dict[str, List[str]] = {"compartments": [],
+                                               "epidemiological": [],
+                                               "regional": []
+                                               }
+
+    def _verify_legal_params(self, parameters: Dict[str, Any], ) -> None:
+        """Verify that the list of parameters passed by the parameters
+        object is legal for the selected model
+
+        :raises ModelError:
+            If any of parameters not found in _model_parameters
+        """
+        for parameter in parameters:
+            if parameter not in self._model_parameters:
+                raise ModelError(f"'{parameter}' not valid selection")
+
+    def _set_compartments(
+        self, parameters: Dict[str, Any],
+    ) -> None:
+        """Parse the defined legal parameters for compartments and set
+        the compartments as class attributes with values equal to those
+        defined by the parameters object"""
+        for compartment in self._model_parameters["compartments"]:
+            self.__set_attr__ = (compartment, parameters[compartment])
 
     def __init__(self, distributions: str = "normal") -> None:
         self._dist = distributions
 
     @abstractmethod
-    def fit(
-        self, parameters: Dict[str, Any], census: np.ndarray = None
-    ) -> None:
+    def fit(self, parameters: Dict[str, Any]) -> None:
         """Fit the model to the parameters"""
+
+    def _n_from_compartments(self):
+        return sum(
+            getattr(self, compartment)
+            for compartment in self._model_parameters["compartments"]
+        )
 
     @abstractmethod
     def simulate(self):
         """Execute a single model step"""
-
-    def _verify_legal_params(self, submitted_params: Dict[str, Any],) -> None:
-        """Check all required parameters are present"""
-        for parameter in submitted_params:
-            if parameter not in self._model_parameters:
-                raise ModelError(f"'{parameter}' not valid selection")
-
-    def _get_compartments(
-        self, parameters: Dict[str, Any],
-    ) -> Dict[str, List[int]]:
-        """Parse the compartments and values from the parameter object"""
-        return {compartment: [
-            int(parameters[compartment])
-        ] for compartment in self._model_parameters["compartments"]}
-
-
-
-

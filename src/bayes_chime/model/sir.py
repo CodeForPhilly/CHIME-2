@@ -12,101 +12,107 @@ TODO : Unit testing
 from typing import Any, List, Dict, NewType
 
 from .base import CompartmentalModel
+from src.bayes_chime.util import _n_from_compartments
+
+import numpy as np
 
 _valid_distributions: List[str] = ["normal"]
 _sir_params: Dict[str, Any] = {
     "compartments": ["susceptible", "infected", "removed"],
-    "epidemiological": ["beta" or "initial_doubling_time", "gamma" or "recovery_days"],
-    "regional": [
-        "market_share",
-        "initial_hospitalized",
-        "hospitalization_probability",
-        "hospitalized_LOS",
-        "initial_icu",
-        "icu_probability",
-        "icu_LOS",
-        "initial_ventilatory",
-        "ventilatory_probability",
-        "ventilatory_LOS",
-    ],
+    "epidemiological": ["beta", "gamma"]
 }
 
 
 class SIR(CompartmentalModel):
-    """SIR Compartmental Model
     """
-    _model_parameters: List[str] = [[i for i in values] for values in _sir_params.values()]
+    =======================
+    SIR Compartmental Model
+    =======================
 
-    def __init__(self, distributions="normal"):
+    # TODO summary explanation, args, attrs, methods
+    """
+    beta: float
+    gamma: float
+    susceptible: int
+    infected: int
+    removed: int
+
+    def __init__(self):
         super().__init__()
-        self._dist = distributions
-        self._valid_parameters = _sir_params
-        self.gamma: float = 0.0
-        self.susceptible: int = 0
-        self.infected: int = 0
-        self.removed: int = 0
+        self._model_parameters = _sir_params
+        self._set_compartments(self._model_parameters)
 
-    def fit(self, parameters: Dict[str, Any], census) -> None:
-        """Fit the model to the time series data provided by hospital
-        census records"""
-
-        if "gamma" not in parameters:
+    # calculations for missing values 🡇
+    def _get_gamma(self, parameters):
+        if not self.gamma:
             self.gamma = 1 / (
                 parameters["recovery_days"] / parameters["days_per_step"]
             )
 
-        if "beta" not in parameters:
-            total_population = sum(
-                parameters["initial_" + comp] for comp in self.compartments
-            )
-            beta = log(2) / (parameters["initial_doubling_time"]
-                             / parameters["days_per_step"]
-                             )
-            beta += parameters["gamma"]
-            beta *= total_population / parameters["initial_susceptible"]
-            parameters["beta"] = beta
+    def _get_beta(self, parameters) -> None:
+        if not self.beta:
+            total_population = _n_from_compartments()
+            b = np.log(2) / (parameters["initial_doubling_time"] / 1)
+            b += self.gamma
+            b *= total_population / parameters["initial_susceptible"]
+            self.beta = b
 
-    def simulate(
-        self, data: Dict[str, NormalDistVar], **parameters: Dict[str, FloatOrDistVar]
-    ) -> Array:
-        """Executes SIR step and patches results such that each component is larger zero.
-        Arguments:
-            data:
-                susceptible: Susceptible population
-                infected: Infected population
-                recovered: Recovered population
-            pars:
-                beta: Growth rate for infected
-                gamma: Recovery rate for infected
-        Returns:
-            Updated compartments and optionally additional information like change
-            from last iteration.
+    def fit(self, parameters: Dict[str, Any]) -> None:
         """
-        super().simulate()
-        infected = data["infected"]
-        recovered = data["recovered"]
+        Fit the model to the time series data provided by hospital
+        census records. Find missing values for `gamma` and `beta` if
+        none exist.
 
-        total = susceptible + infected + recovered
+        :argument parameters:
+            Dictionary object of parameters to fit.
+        """
+        self._verify_legal_params(parameters)
+        if "gamma" not in parameters:
+            self._get_gamma(parameters)
+        if "beta" not in parameters:
+            self._get_beta(parameters)
+        for compartment in self._model_parameters["compartments"]:
+            setattr(self, compartment, parameters[compartment])
 
-        d_si = parameters["beta"] * susceptible / total * infected
-        d_ir = parameters["gamma"] * infected
+    @property
+    def total(self):
+        """Total population of all compartments"""
+        return _n_from_compartments(self._model_parameters["compartments"])
 
-        susceptible -= d_si
-        infected += d_si - d_ir
-        recovered += d_ir
+    def _d_si(self):
+        """Count newly infected"""
+        n = self.total
+        return self.beta * self.susceptible / n * self.infected
 
-        susceptible = max(susceptible, 0)
-        infected = max(infected, 0)
-        recovered = max(recovered, 0)
+    def _d_ir(self):
+        """Determine new recovered"""
+        return self.gamma * self.infected
 
-        rescale = total / (susceptible + infected + recovered)
+    def _scale_compartments(self, scalar):
+        for compartment in self._model_parameters["compartments"]:
+            self.__set_attr__(compartment, max((compartment * scalar), 0))
+
+    def simulate(self) -> np.array:
+        """Calculates the results of the model"""
+        """
+        Execute simulation
+        """
+        starting_total = self.total
+
+        self.susceptible -= round(self._d_si())
+        self.infected += round(self._d_si()
+                               - self._d_ir())
+        self.removed += round(self._d_si())
+
+        scalar = starting_total / self.total
+        self._scale_compartments(scalar)
 
         return {
-            "susceptible": susceptible * rescale,
-            "infected": infected * rescale,
-            "recovered": recovered * rescale,
-            "infected_new": d_si * rescale,
-            "recovered_new": d_ir * rescale,
+            "susceptible": self.susceptible,
+            "infected": self.infected,
+            "removed": self.removed,
+            "infected_new": self._d_si() * scalar,
+            "recovered_new": self._d_ir() * scalar,
         }
         # _validate_parameters(parameters, self._model_parameters)
         # self._idx = _build_dt_index(
