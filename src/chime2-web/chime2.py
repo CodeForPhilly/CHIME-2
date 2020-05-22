@@ -1,9 +1,8 @@
-#! /usr/env/python3
+# -*- coding: utf-8 -*-
 """
-.. currentmodule:: chime2-app
-
-chime2
-======
+======================
+CHIME2 Web Application
+======================
 
 Reactive web application presenting the latest iteration of the Covid-19
 Hospital Impact Model for Epidemics from the Predictive Healthcare team
@@ -20,30 +19,23 @@ normal extension, created by Dr. Chris Koerber of UC Berkley, which
 optimizes for speed the latest CHIME iteration by assuming normal
 distributions among model parameters. Thanks to his work, and the work
 of the Penn Medicine team we can offer this application.
-
 """
-import os
-import unittest
-
-from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
 
-from .app import blueprint
-from .app.server import create_app, db
-from app.main.model import user, blacklist
+from app import blueprint
+from app.main import config, create_app
 
-app = create_app("dev")
+app = create_app(config)
 app.register_blueprint(blueprint)
-
 app.app_context().push()
-
 manager = Manager(app)
-
-migrate = Migrate(app, db)
-
-manager.add_command("db", MigrateCommand)
 
 
 @manager.command
 def run():
+    """run the flask app"""
     app.run()
+
+
+if __name__ == "__main__":
+    manager.run()
