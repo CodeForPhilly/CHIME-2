@@ -33,7 +33,7 @@ def create_app(context: str = "prod") -> DashAppInstance:
 
     Env = from_object(context)
 
-    LANGUAGE = Env.LANG
+    LANGUAGE = Env.language
     body = Root(LANGUAGE, Parameters.create(os.environ, []),)
 
     App = Dash(
@@ -42,7 +42,7 @@ def create_app(context: str = "prod") -> DashAppInstance:
         external_scripts=body.external_scripts,
     )
 
-    App.title = Env.CHIME_TITLE
+    App.title = Env.title
     App.layout = body.html
     wrap_callbacks(App)
 
