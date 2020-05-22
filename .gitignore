@@ -23,3 +23,6 @@ Pipfile.lock
 # OS
 .DS_STORE
 Desktop.ini
+
+# dotenv
+.env
