@@ -1,6 +1,6 @@
 ---
-name: Flask Related
-about: ''
+name: Flask
+about: flask related issues
 title: ''
 labels: 'flask'
 assignees: '@brianthomasross'
