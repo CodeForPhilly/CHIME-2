@@ -1,0 +1,2 @@
+web: gunicorn run:server
+release: flask db upgrade
