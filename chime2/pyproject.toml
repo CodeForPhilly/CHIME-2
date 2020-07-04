@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "chime2"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.6.9"
+numpy = "^1.18.5"
+pandas = "^1.0.5"
+seaborn = "^0.10.1"
+gvar = "^11.6"
+lsqfit = "^11.6"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
