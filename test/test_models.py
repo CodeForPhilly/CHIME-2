@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Model unit tests."""
+"""Model unit test."""
 import datetime as dt
 
 import pytest
@@ -11,7 +11,7 @@ from .factories import UserFactory
 
 @pytest.mark.usefixtures("db")
 class TestUser:
-    """User tests."""
+    """User test."""
 
     def test_get_by_id(self):
         """Get user by ID."""

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Factories to help in tests."""
+"""Factories to help in test."""
 from factory import PostGenerationMethodCall, Sequence
 from factory.alchemy import SQLAlchemyModelFactory
 

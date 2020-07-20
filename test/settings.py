@@ -2,9 +2,9 @@
 ENV = "development"
 TESTING = True
 SQLALCHEMY_DATABASE_URI = "sqlite://"
-SECRET_KEY = "not-so-secret-in-tests"
+SECRET_KEY = "not-so-secret-in-test"
 BCRYPT_LOG_ROUNDS = (
-    4  # For faster tests; needs at least 4 to avoid "ValueError: Invalid rounds"
+    4  # For faster test; needs at least 4 to avoid "ValueError: Invalid rounds"
 )
 DEBUG_TB_ENABLED = False
 CACHE_TYPE = "simple"  # Can be "memcached", "redis", etc.

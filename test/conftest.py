@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Defines fixtures available to all tests."""
+"""Defines fixtures available to all test."""
 
 import logging
 
@@ -14,8 +14,8 @@ from .factories import UserFactory
 
 @pytest.fixture
 def app():
-    """Create application for the tests."""
-    _app = create_app("tests.settings")
+    """Create application for the test."""
+    _app = create_app("test.settings")
     _app.logger.setLevel(logging.CRITICAL)
     ctx = _app.test_request_context()
     ctx.push()
@@ -33,7 +33,7 @@ def testapp(app):
 
 @pytest.fixture
 def db(app):
-    """Create database for the tests."""
+    """Create database for the test."""
     _db.app = app
     with app.app_context():
         _db.create_all()
@@ -47,7 +47,7 @@ def db(app):
 
 @pytest.fixture
 def user(db):
-    """Create user for the tests."""
+    """Create user for the test."""
     user = UserFactory(password="myprecious")
     db.session.commit()
     return user
