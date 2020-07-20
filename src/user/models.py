@@ -11,7 +11,7 @@ from src.database import (
     reference_col,
     relationship,
 )
-from src.extensions import bcrypt
+from src.extension import bcrypt
 
 
 class Role(PkModel):
