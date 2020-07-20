@@ -5,8 +5,9 @@ import sys
 
 from flask import Flask, render_template
 
+from src.dashboard import register_dashboard
 from src import commands, public, user
-from src.extensions import (
+from src.extension import (
     bcrypt,
     cache,
     csrf_protect,
@@ -25,12 +26,14 @@ def create_app(config_object="src.settings"):
     """
     app = Flask(__name__.split(".")[0])
     app.config.from_object(config_object)
+    register_dashboard(app)
     register_extensions(app)
     register_blueprints(app)
     register_errorhandlers(app)
     register_shellcontext(app)
     register_commands(app)
     configure_logger(app)
+
     return app
 
 
