@@ -16,7 +16,7 @@ RUN apt-get install -y \
 WORKDIR /app
 COPY requirements requirements
 
-COPY . .
+COPY .. .
 
 RUN useradd -m sid
 RUN chown -R sid:sid /app
@@ -34,8 +34,8 @@ CMD [ "npm", "start" ]
 # ================================= PRODUCTION =================================
 FROM base AS production
 RUN pip install --user -r requirements/prod.txt
-COPY supervisord.conf /etc/supervisor/supervisord.conf
-COPY supervisord_programs /etc/supervisor/conf.d
+COPY ../supervisord.conf /etc/supervisor/supervisord.conf
+COPY ../supervisord_programs /etc/supervisor/conf.d
 EXPOSE 5000
 ENTRYPOINT ["/bin/bash", "shell_scripts/supervisord_entrypoint.sh"]
 CMD ["-c", "/etc/supervisor/supervisord.conf"]

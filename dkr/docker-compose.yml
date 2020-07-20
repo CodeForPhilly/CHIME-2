@@ -13,7 +13,7 @@ x-default-volumes: &default_volumes
 services:
   flask-dev:
     build:
-      context: .
+      context: ..
       target: development
       args:
         <<: *build_args
@@ -25,7 +25,7 @@ services:
 
   flask-prod:
     build:
-      context: .
+      context: ..
       target: production
       args:
         <<: *build_args
@@ -41,7 +41,7 @@ services:
 
   manage:
     build:
-      context: .
+      context: ..
       target: manage
     environment:
       FLASK_ENV: production
