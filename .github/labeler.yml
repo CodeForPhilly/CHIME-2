@@ -1,8 +1,0 @@
-module:dashboard:
-  - src/chime2/app/dashboard/**/*
-
-module:server:
-  - src/chime2/app/server/**/*
-
-:module:util:
-  - src/chime2/app/util/**/*
