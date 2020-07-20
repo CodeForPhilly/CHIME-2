@@ -1,9 +1,0 @@
-{% extends "base.html" %}
-
-{% block content %}
-{% if current_user.is_anonymous %}
-  <h1>Welcome to the Covid-19 Hospital Model for Epidemics</h1>
-{% else  %}
-  <h1>Hi, {{ current_user.username }}!</h1>
-{% endif %}
-{% endblock %}

@@ -1,28 +1,58 @@
-# Build
-build/
-dist/
+*.py[cod]
+
+# C extensions
+*.so
+
+# Packages
 *.egg
 *.egg-info
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+lib
+lib64
 
-# Bytecode
-__pycache__/
-*.pyc
+# Installer logs
+pip-log.txt
 
-# mypy
-.mypy_cache/
+# Unit test / coverage reports
+.coverage
+.tox
+nosetests.xml
 
-# Editor
-.idea/
-.vscode/
+# Translations
+*.mo
 
-# Environment
-.python-version
-Pipfile.lock
-.venv/
+# Mr Developer
+.mr.developer.cfg
+.project
+.pydevproject
 
-# OS
-.DS_STORE
-Desktop.ini
+# Complexity
+output/*.html
+output/*/index.html
 
-# dotenv
+# Sphinx
+docs/_build
+
+.webassets-cache
+
+# Virtualenvs
+env/
+
+# npm
+/node_modules/
+
+# webpack-built files
+/src/static/build/
+
+# Configuration
 .env
+
+# Development database
+*.db

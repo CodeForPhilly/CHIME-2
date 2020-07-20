@@ -1,8 +1,0 @@
-version: '3.1'
-
-services:
-  app:
-    build: "../../CHIME-2"
-    restart: always
-    ports:
-      - "${PORT}:8000"
