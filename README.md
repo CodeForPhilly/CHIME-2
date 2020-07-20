@@ -1,6 +1,7 @@
-# chime2
+# CHIME-2
 
-A flasky app.
+Web app serving CHIME from Penn Medicine
+
 
 ## Docker Quickstart
 
