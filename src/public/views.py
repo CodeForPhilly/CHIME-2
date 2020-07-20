@@ -11,7 +11,7 @@ from flask import (
 )
 from flask_login import login_required, login_user, logout_user
 
-from src.extensions import login_manager
+from src.extension import login_manager
 from src.public.forms import LoginForm
 from src.user.forms import RegisterForm
 from src.user.models import User
@@ -75,3 +75,10 @@ def about():
     """About page."""
     form = LoginForm(request.form)
     return render_template("public/about.html", form=form)
+
+
+@blueprint.route("/contributors/")
+def contributors():
+    """About page."""
+    form = LoginForm(request.form)
+    return render_template("public/contributors.html", form=form)
