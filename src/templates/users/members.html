@@ -1,9 +1,10 @@
-
 {% extends "layout.html" %}
 {% block content %}
-    <div class="container">
-        <h1>Welcome {{ current_user.username }}</h1>
-        <h3>This is the members-only page.</h3>
+    <div class="container mx-15 mt-10">
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-3">Welcome back, {{ current_user.username }}</h1>
+        </div>
     </div>
 {% endblock %}
 
