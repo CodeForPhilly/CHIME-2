@@ -4,14 +4,14 @@ import datetime as dt
 
 from flask_login import UserMixin
 
-from src.database import (
+from app.database import (
     Column,
     PkModel,
     db,
     reference_col,
     relationship,
 )
-from src.extension import bcrypt
+from app.extension import bcrypt
 
 
 class Role(PkModel):

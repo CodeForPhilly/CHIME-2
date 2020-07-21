@@ -50,7 +50,7 @@ env/
 /node_modules/
 
 # webpack-built files
-/src/static/build/
+/app/static/build/
 
 # Configuration
 .env

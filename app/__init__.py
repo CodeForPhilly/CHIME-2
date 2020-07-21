@@ -5,9 +5,9 @@ import sys
 
 from flask import Flask, render_template
 
-from src.dashboard import register_dashboard
-from src import commands, public, user
-from src.extension import (
+from app.dashboard import register_dashboard
+from app import commands, public, user
+from app.extension import (
     bcrypt,
     cache,
     csrf_protect,
@@ -18,8 +18,10 @@ from src.extension import (
     migrate,
 )
 
+__all__ = ["create_app"]
 
-def create_app(config_object="src.settings"):
+
+def create_app(config_object="app.settings"):
     """Create application factory, as explained here: http://flask.pocoo.org/docs/patterns/appfactories/.
 
     :param config_object: The configuration object to use.
