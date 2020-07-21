@@ -7,7 +7,7 @@
       },
       "FLASK_APP": {
          "description": "FLASK_APP.",
-         "value": "autoapp.py"
+         "value": "manage.py"
       }
    },
    "buildpacks": [
