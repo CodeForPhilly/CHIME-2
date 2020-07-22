@@ -7,7 +7,7 @@ import pytest
 from webtest import TestApp
 
 from app.app import create_app
-from app.database import db as _db
+from app.models._base import db as _db
 
 from .factories import UserFactory
 

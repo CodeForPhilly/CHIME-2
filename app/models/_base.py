@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 """Database module, including the SQLAlchemy database object and DB-related utilities."""
-from .compat import basestring
-from .extension import db
+from app.compat import basestring
+from app.extension import db
 
-# Alias common SQLAlchemy names
+# Aliases
 Column = db.Column
 relationship = db.relationship
 
 
 class CRUDMixin(object):
-    """Mixin that adds convenience methods for CRUD (create, read, update, delete) operations."""
+    """CRUD operation convenience Mixin"""
 
     @classmethod
     def create(cls, **kwargs):
@@ -41,6 +41,7 @@ class Model(CRUDMixin, db.Model):
 
     __abstract__ = True
 
+
 class PkModel(Model):
     """Base model class that includes CRUD convenience methods, plus adds a 'primary key' column named ``id``"""
 
@@ -51,16 +52,17 @@ class PkModel(Model):
     def get_by_id(cls, record_id):
         """Get record by ID."""
         if any(
-            (
-                isinstance(record_id, basestring) and record_id.isdigit(),
-                isinstance(record_id, (int, float)),
-            )
+                (
+                        isinstance(record_id, basestring) and record_id.isdigit(),
+                        isinstance(record_id, (int, float)),
+                )
         ):
             return cls.query.get(int(record_id))
         return None
 
+
 def reference_col(
-    tablename, nullable=False, pk_name="id", foreign_key_kwargs=None, column_kwargs=None
+        tablename, nullable=False, pk_name="id", foreign_key_kwargs=None, column_kwargs=None
 ):
     """Column that adds primary key foreign key reference.
 

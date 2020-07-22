@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 """The app module, containing the app factory function."""
+from importlib import import_module
 import logging
 import sys
 
 from flask import Flask, render_template
 
+from app.blueprints import application_blueprints
 from app.dashboard import register_dashboard
-from app import commands, public, user
+from app import commands, user
 from app.extension import (
     bcrypt,
     cache,
@@ -54,8 +56,9 @@ def register_extensions(app):
 
 def register_blueprints(app):
     """Register Flask blueprints."""
-    app.register_blueprint(public.views.blueprint)
-    app.register_blueprint(user.views.blueprint)
+    for ns in application_blueprints:
+        import_module(ns.import_name)
+        app.register_blueprint(ns)
     return None
 
 

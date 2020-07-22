@@ -1,10 +1,7 @@
 # -*- coding: utf-8 -*-
 """Application configuration.
 
-Most configuration is set via environment variables.
-
-For local development, use a .env file to set
-environment variables.
+Locally these variables can be set with `source .env`
 """
 from environs import Env
 
