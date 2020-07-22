@@ -1,10 +1,12 @@
-import dash
+# -*- coding: utf-8 -*-
+"""
 
-from flask.helpers import get_root_path
-from flask_login import login_required
+"""
+import dash
 from dash_bootstrap_components.themes import BOOTSTRAP
 
-from . import page
+from app.dashboard import page
+from app.dashboard.customization import CustomDash, custom_index_str
 
 
 def register_dashboard(app):
@@ -24,7 +26,8 @@ def register_dashboard(app):
         __name__,
         server=app,
         url_base_pathname="/dashboard/",
-        assets_folder=get_root_path(__name__) + "/assets/",
+        # index_string=custom_index_str,
+        # assets_folder="/assets/",
         external_stylesheets=external_stylesheets,
         meta_tags=[meta_viewport],
     )
@@ -34,12 +37,12 @@ def register_dashboard(app):
         dashboard.layout = page.layout
         # register_callbacks(dashboard)
 
-#     _protect_dashboard(dashboard)
-#
-#
+    # _protect_dashboard(dashboard)
+
+
 # def _protect_dashboard(dashboard):
 #     for view_func in dashboard.server.view_functions:
 #         if view_func.startswith(dashboard.config.url_base_pathname):
 #             dashboard.server.view_functions[view_func] = login_required(
-#                 dashboard.server.view_functions[view_func]
+#                 dashboard.server.view_functions[view_func])
 #             )
