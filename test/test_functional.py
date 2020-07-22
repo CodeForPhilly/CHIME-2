@@ -107,7 +107,7 @@ class TestRegistering:
         user = UserFactory(active=True)  # A registered user
         user.save()
         # Goes to registration page
-        res = testapp.get(url_for('auth.user.register'))
+        res = testapp.get(url_for("auth.user.register"))
         # Fills out form, but username is already registered
         form = res.forms["registerForm"]
         form["username"] = user.username

@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Dash app overloading
+"""Tools for overloading dash objects.
 
 WIP:
 """
@@ -34,7 +33,7 @@ custom_index_str = """<!DOCTYPE html>
 
 
 class CustomDash(dash.Dash):
-    """Overloading the default methods for dash.Dash"""
+    """Overloaded custom ``Dash`` class."""
 
     def interpolate_index(
         self,
@@ -49,6 +48,7 @@ class CustomDash(dash.Dash):
         nav=nav_html,
         footer=footer_html,
     ):
+        """Overloads the default base html template."""
         return interpolate_str(
             custom_index_str,
             metas=metas,

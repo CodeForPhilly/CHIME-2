@@ -9,7 +9,7 @@ relationship = db.relationship
 
 
 class CRUDMixin(object):
-    """CRUD operation convenience Mixin"""
+    """CRUD operation convenience Mixin."""
 
     @classmethod
     def create(cls, **kwargs):
@@ -43,7 +43,7 @@ class Model(CRUDMixin, db.Model):
 
 
 class PkModel(Model):
-    """Base model class includes CRUD convenience methods, plus adds a 'primary key' column named ``id``"""
+    """Base model class includes CRUD convenience methods, plus adds a 'primary key' column named ``id``."""
 
     __abstract__ = True
     id = Column(db.Integer, primary_key=True)

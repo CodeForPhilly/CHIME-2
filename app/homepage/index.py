@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Routes included here:
+"""Routes included here.
 
 /                   the application homepage
 
@@ -34,13 +34,13 @@ def home():
 
 @homepage_index.route("/about/")
 def about():
-    """Application "About" page"""
+    """Application "About" page."""
     form = LoginForm(request.form)
     return render_template("about.html", form=form)
 
 
 @homepage_index.route("/contributors/")
 def contributors():
-    """Application contributors page"""
+    """Application contributors page."""
     form = LoginForm(request.form)
     return render_template("contributors.html", form=form)

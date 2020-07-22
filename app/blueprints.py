@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-"""All Blueprint objects and URL path names defined here.
-"""
+"""All Blueprint objects and URL path names defined here."""
 from flask import Blueprint
 
 

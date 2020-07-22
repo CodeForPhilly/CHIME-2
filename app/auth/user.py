@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Authentication endpoints and control"""
+"""Authentication endpoints and control."""
 from flask import flash, redirect, render_template, request, url_for
 from flask_login import login_required, logout_user
 

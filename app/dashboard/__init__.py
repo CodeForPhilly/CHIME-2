@@ -1,15 +1,13 @@
 # -*- coding: utf-8 -*-
-"""
-
-"""
+"""Dashboard built using plotly-dash."""
 import dash
 from dash_bootstrap_components.themes import BOOTSTRAP
 
 from app.dashboard import page
-from app.dashboard.customization import CustomDash, custom_index_str
 
 
 def register_dashboard(app):
+    """Dash application factory."""
     # from .callback import register_callbacks
 
     external_stylesheets = [
