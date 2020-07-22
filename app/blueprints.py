@@ -18,23 +18,21 @@ def _factory(view_module_path: str, blueprint_url_path: str):
 
     """
     name = view_module_path
-    import_name = 'app.{}'.format(view_module_path)
-    template_dir = 'templates'
-    static_dir = 'static'
-    blueprint = Blueprint(name,
-                          import_name,
-                          template_folder=template_dir,
-                          static_folder=static_dir,
-                          url_prefix=blueprint_url_path
-                          )
+    import_name = "app.{}".format(view_module_path)
+    template_dir = "templates"
+    static_dir = "static"
+    blueprint = Blueprint(
+        name,
+        import_name,
+        template_folder=template_dir,
+        static_folder=static_dir,
+        url_prefix=blueprint_url_path,
+    )
     return blueprint
 
 
-homepage_index = _factory('homepage.index', '/')
-auth_user = _factory('auth.user', '/auth')
-user_profile = _factory('user.profile', '/users')
+homepage_index = _factory("homepage.index", "/")
+auth_user = _factory("auth.user", "/auth")
+user_profile = _factory("user.profile", "/users")
 
-application_blueprints = (homepage_index,
-                          auth_user,
-                          user_profile
-                          )
+application_blueprints = (homepage_index, auth_user, user_profile)

@@ -11,4 +11,3 @@ from app.blueprints import user_profile
 def account():
     """Placeholder restricted route. Testing functionality."""
     return render_template("/members.html")
-

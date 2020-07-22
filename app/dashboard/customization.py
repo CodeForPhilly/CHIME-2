@@ -8,8 +8,10 @@ import dash
 
 from app.dashboard.util import load_html, interpolate_str
 
-nav_html = load_html('nav.html').split('{% if current_user and current_user.is_authenticated %}')[0]
-footer_html = load_html('footer.html')
+nav_html = load_html("nav.html").split(
+    "{% if current_user and current_user.is_authenticated %}"
+)[0]
+footer_html = load_html("footer.html")
 
 custom_index_str = """<!DOCTYPE html>
 <html>
@@ -35,17 +37,17 @@ class CustomDash(dash.Dash):
     """Overloading the default methods for dash.Dash"""
 
     def interpolate_index(
-            self,
-            metas="",
-            title="",
-            css="",
-            config="",
-            scripts="",
-            app_entry="",
-            favicon="",
-            renderer="",
-            nav=nav_html,
-            footer=footer_html
+        self,
+        metas="",
+        title="",
+        css="",
+        config="",
+        scripts="",
+        app_entry="",
+        favicon="",
+        renderer="",
+        nav=nav_html,
+        footer=footer_html,
     ):
         return interpolate_str(
             custom_index_str,
