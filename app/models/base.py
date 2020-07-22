@@ -37,13 +37,13 @@ class CRUDMixin(object):
 
 
 class Model(CRUDMixin, db.Model):
-    """Base model class that includes CRUD convenience methods."""
+    """Base model class includes CRUD convenience methods."""
 
     __abstract__ = True
 
 
 class PkModel(Model):
-    """Base model class that includes CRUD convenience methods, plus adds a 'primary key' column named ``id``"""
+    """Base model class includes CRUD convenience methods, plus adds a 'primary key' column named ``id``"""
 
     __abstract__ = True
     id = Column(db.Integer, primary_key=True)

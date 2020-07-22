@@ -5,7 +5,7 @@ import datetime as dt
 from flask_login import UserMixin
 
 from app.extension import bcrypt
-from app.models._base import Column, PkModel, db, reference_col, relationship
+from app.models.base import Column, PkModel, db, reference_col, relationship
 
 
 class Role(PkModel):
@@ -13,7 +13,7 @@ class Role(PkModel):
 
     __tablename__ = "roles"
     name = Column(db.String(80), unique=True, nullable=False)
-    user_id = reference_col("templates", nullable=True)
+    user_id = reference_col("users", nullable=True)
     user = relationship("User", backref="roles")
 
     def __init__(self, name, **kwargs):
@@ -28,7 +28,7 @@ class Role(PkModel):
 class User(UserMixin, PkModel):
     """A user of the app."""
 
-    __tablename__ = "templates"
+    __tablename__ = "users"
     username = Column(db.String(80), unique=True, nullable=False)
     email = Column(db.String(80), unique=True, nullable=False)
     #: The hashed password

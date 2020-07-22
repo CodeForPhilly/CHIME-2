@@ -2,7 +2,7 @@
 """Test forms."""
 
 from app.auth.form import LoginForm
-from app.user.forms import RegisterForm
+from app.auth.form import RegisterForm
 
 
 class TestRegisterForm:

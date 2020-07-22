@@ -6,8 +6,8 @@ import logging
 import pytest
 from webtest import TestApp
 
-from app.app import create_app
-from app.models._base import db as _db
+from app import create_app
+from app.models.base import db as _db
 
 from .factories import UserFactory
 

@@ -6,7 +6,7 @@ from flask_login import login_required, logout_user
 from app.auth.form import RegisterForm
 from app.blueprints import auth_user
 from app.extension import login_manager
-from app.models.models import User
+from app.models.user import User
 from app.utils import flash_errors
 
 
@@ -22,7 +22,7 @@ def logout():
     """Logout."""
     logout_user()
     flash("You are logged out.", "info")
-    return redirect(url_for("templates.home"))
+    return redirect(url_for("homepage.index.home"))
 
 
 @auth_user.route("/register/", methods=["GET", "POST"])
@@ -37,7 +37,7 @@ def register():
             active=True,
         )
         flash("Thank you for registering. You can now log in.", "success")
-        return redirect(url_for("templates.home"))
+        return redirect(url_for("homepage.index.home"))
     else:
         flash_errors(form)
-    return render_template("../homepage/templates/register.html", form=form)
+    return render_template("register.html", form=form)
