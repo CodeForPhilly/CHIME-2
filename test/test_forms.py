@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 """Test forms."""
 
-from app.auth.form import LoginForm
-from app.auth.form import RegisterForm
+from app.auth.form import LoginForm, RegisterForm
 
 
 class TestRegisterForm:

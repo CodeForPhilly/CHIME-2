@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """User views."""
-from flask import Blueprint, render_template
+from flask import render_template
 from flask_login import login_required
 
 from app.blueprints import user_profile

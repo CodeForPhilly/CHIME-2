@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
-"""dashboard specific helper functions"""
+"""Dash app specific helper functions."""
 import os
 
 
 def load_html(html_file: str):
-    """Used to load html file from template dir and pass into homepage
-     string"""
+    """Used to load html file from template dir and pass into homepage string."""
     filepath = os.getcwd() + "/app/templates/" + f"{html_file}"
     print(filepath)
     with open(filepath, "r") as f:
@@ -14,6 +13,7 @@ def load_html(html_file: str):
 
 
 def interpolate_str(template, **data):
+    """Parse and fill values in custom index string."""
     s = template
     for k, v in data.items():
         key = "{%" + k + "%}"
