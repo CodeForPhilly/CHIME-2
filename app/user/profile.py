@@ -10,4 +10,4 @@ from app.blueprints import user_profile
 @login_required
 def account():
     """Placeholder restricted route. Testing functionality."""
-    return render_template("/members.html")
+    return render_template("members.html")
