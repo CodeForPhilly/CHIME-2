@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Covid-19 Hospital Impact Model for Epidemics 2",
   "scripts": {
-    "postinstall": "virtualenv-postinstall",
     "build": "run-script-os",
     "build:win32": "SET NODE_ENV=production && webpack --progress --colors -p && npm run flask-static-digest",
     "build:default": "NODE_ENV=production webpack --progress --colors -p && npm run flask-static-digest",
