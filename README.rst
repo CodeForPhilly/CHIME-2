@@ -1,3 +1,6 @@
+.. image:: https://travis-ci.org/CodeForPhilly/CHIME-2.svg?branch=master
+    :target: https://travis-ci.org/CodeForPhilly/CHIME-2
+
 =======
 CHIME-2
 =======
