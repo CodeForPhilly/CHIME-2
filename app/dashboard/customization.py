@@ -6,7 +6,7 @@ WIP:
 """
 import dash
 
-from app.dashboard.util import load_html, interpolate_str
+from app.dashboard.util import interpolate_str, load_html
 
 nav_html = load_html("nav.html").split(
     "{% if current_user and current_user.is_authenticated %}"

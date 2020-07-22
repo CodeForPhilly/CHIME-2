@@ -7,18 +7,11 @@
 
 /contributors/      information about contributors or how to begin contributing
 """
-from flask import (
-    current_app,
-    flash,
-    redirect,
-    render_template,
-    request,
-    url_for,
-)
+from flask import current_app, flash, redirect, render_template, request, url_for
 from flask_login import login_user
 
-from app.blueprints import homepage_index
 from app.auth.form import LoginForm
+from app.blueprints import homepage_index
 from app.utils import flash_errors
 
 

@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 """The app module, containing the app factory function."""
-from importlib import import_module
 import logging
 import sys
+from importlib import import_module
 
 from flask import Flask, render_template
 
+from app import commands, user
 from app.blueprints import application_blueprints
 from app.dashboard import register_dashboard
-from app import commands, user
 from app.extension import (
     bcrypt,
     cache,

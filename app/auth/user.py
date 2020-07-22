@@ -1,18 +1,12 @@
 # -*- coding: utf-8 -*-
 """Authentication endpoints and control"""
-from flask import (
-    flash,
-    redirect,
-    render_template,
-    request,
-    url_for,
-)
+from flask import flash, redirect, render_template, request, url_for
 from flask_login import login_required, logout_user
 
+from app.auth.form import RegisterForm
 from app.blueprints import auth_user
 from app.extension import login_manager
 from app.models.models import User
-from app.auth.form import RegisterForm
 from app.utils import flash_errors
 
 
