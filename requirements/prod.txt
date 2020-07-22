@@ -38,3 +38,7 @@ Flask-DebugToolbar==0.11.0
 
 # Environment variable parsing
 environs==8.0.0
+
+# Plotly Dash
+dash<=1.13.4
+dash-bootstrap-components<=0.10.3
