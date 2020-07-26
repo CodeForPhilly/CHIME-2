@@ -3,6 +3,8 @@
 
 Locally these variables can be set with `source .env`
 """
+from pathlib import Path
+
 from environs import Env
 
 env = Env()
@@ -18,3 +20,4 @@ DEBUG_TB_ENABLED = DEBUG
 DEBUG_TB_INTERCEPT_REDIRECTS = False
 CACHE_TYPE = "simple"  # Can be "memcached", "redis", etc.
 SQLALCHEMY_TRACK_MODIFICATIONS = False
+ROOT_PATH = str(Path(__file__).absolute().parent)
