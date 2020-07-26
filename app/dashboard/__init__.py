@@ -1,9 +1,13 @@
 # -*- coding: utf-8 -*-
 """Dashboard built using plotly-dash."""
+from flask.helpers import  get_root_path
 import dash
+from flask.helpers import get_root_path
 from dash_bootstrap_components.themes import BOOTSTRAP
 
+from app.settings import ROOT_PATH
 from app.dashboard import page
+from app.dashboard.customization import custom_index_str
 
 
 def register_dashboard(app):
@@ -24,16 +28,17 @@ def register_dashboard(app):
         __name__,
         server=app,
         url_base_pathname="/dashboard/",
-        # index_string=custom_index_str,
-        # assets_folder="/assets/",
         external_stylesheets=external_stylesheets,
+        assets_folder=ROOT_PATH+'/static/build/img/',
         meta_tags=[meta_viewport],
     )
 
     with app.app_context():
-        dashboard.title = "CHIME-2"
+        from app.dashboard.callback import register_callbacks
+        dashboard.title = "CHIME 2 Dashboard"
+        dashboard.index_string = custom_index_str
         dashboard.layout = page.layout
-        # register_callbacks(dashboard)
+        register_callbacks(dashboard)
 
     # _protect_dashboard(dashboard)
 
