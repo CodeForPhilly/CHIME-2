@@ -32,11 +32,10 @@ def register_dashboard(app):
         # url_base_pathname="/dashboard/",
         external_stylesheets=external_stylesheets,
         external_scripts=external_scripts,
+        url_base_pathname='/dashboard/',
         assets_folder=ROOT_PATH+'/static/build/img/',
         meta_tags=[meta_viewport],
         index_string=custom_index_str,
-        requests_pathname_prefix='/',
-        routes_pathname_prefix='/',
         suppress_callback_exceptions=True
     )
 

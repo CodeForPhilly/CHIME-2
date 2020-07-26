@@ -22,20 +22,26 @@ def parse_contents(contents, filename, date):
         print(e)
         return html.Div(["There was an error processing this file."])
 
-    return html.Div(
-        [
-            html.H5(filename),
-            html.H6(datetime.datetime.fromtimestamp(date)),
-            dash_table.DataTable(
-                data=df.to_dict("records"),
-                columns=[{"name": i, "id": i} for i in df.columns],
-            ),
-            html.Hr(),  # horizontal line
-            # For debugging, display the raw contents provided by the web browser
-            html.Div("Raw Content"),
-            html.Pre(
-                contents[0:200] + "...",
-                style={"whiteSpace": "pre-wrap", "wordBreak": "break-all"},
-            ),
-        ]
-    )
+    return html.Div(className='container', children=[
+        html.H5(filename),
+        html.H6(datetime.datetime.fromtimestamp(date)),
+        dash_table.DataTable(
+            data=df.to_dict("records"),
+            columns=[{"name": i, "id": i} for i in df.columns],
+            style_table={'overflowX': 'auto'},
+            style_cell={
+                'height': 'auto',
+                # all three widths are needed
+                'minWidth': '180px', 'width': '180px', 'maxWidth': '180px',
+                'whiteSpace': 'normal'
+            }
+        ),
+        html.Hr(),  # horizontal line
+        # For debugging, display the raw contents provided by the web browser
+        html.Div("Raw Content"),
+        html.Pre(
+            contents[0:200] + "...",
+            style={"whiteSpace": "pre-wrap", "wordBreak": "break-all"},
+        ),
+    ]
+                    )
