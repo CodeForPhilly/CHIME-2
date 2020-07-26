@@ -42,3 +42,7 @@ environs==8.0.0
 # Plotly Dash
 dash<=1.13.4
 dash-bootstrap-components<=0.10.3
+
+# Pandas
+pandas>=1.0.5
+dash-table>=4.8.1

@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 """Dashboard built using plotly-dash."""
-from flask.helpers import  get_root_path
 import dash
-from flask.helpers import get_root_path
 from dash_bootstrap_components.themes import BOOTSTRAP
+from dash.dependencies import Input, State, Output
 
 from app.settings import ROOT_PATH
 from app.dashboard import page
@@ -18,6 +17,9 @@ def register_dashboard(app):
         BOOTSTRAP,
         "https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;1,400;1,600&display=swap",
     ]
+    external_scripts = [
+        str(ROOT_PATH + "/static/main_js.bundle.js")
+    ]
     # Meta tags for viewport responsiveness
     meta_viewport = {
         "name": "viewport",
@@ -27,18 +29,22 @@ def register_dashboard(app):
     dashboard = dash.Dash(
         __name__,
         server=app,
-        url_base_pathname="/dashboard/",
+        # url_base_pathname="/dashboard/",
         external_stylesheets=external_stylesheets,
+        external_scripts=external_scripts,
         assets_folder=ROOT_PATH+'/static/build/img/',
         meta_tags=[meta_viewport],
+        index_string=custom_index_str,
+        requests_pathname_prefix='/',
+        routes_pathname_prefix='/',
+        suppress_callback_exceptions=True
     )
 
     with app.app_context():
         from app.dashboard.callback import register_callbacks
-        dashboard.title = "CHIME 2 Dashboard"
-        dashboard.index_string = custom_index_str
         dashboard.layout = page.layout
-        register_callbacks(dashboard)
+        register_callbacks(dashboard=dashboard)
+
 
     # _protect_dashboard(dashboard)
 

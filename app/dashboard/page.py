@@ -6,4 +6,4 @@ from app.settings import ROOT_PATH
 from .component import navbar, header
 from . import tab
 
-layout = html.Div([header.content, tab.content])
+layout = html.Div([header.content, dcc.Graph(), tab.content])

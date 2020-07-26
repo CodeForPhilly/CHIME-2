@@ -1,7 +1,7 @@
 import dash_html_components as html
 import dash_bootstrap_components as dbc
 
-from . import census, parameter, report, upload
+from app.dashboard.tab import census, parameter, report, upload
 
 content = dbc.Card(
     [

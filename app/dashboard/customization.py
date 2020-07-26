@@ -54,16 +54,15 @@ custom_index_str = """
             </ul>
         </div>
     </div>
-    <div class="jumbotron" style="padding-top:100px">
-        <body>
-            {%app_entry%}
-            <footer>
-                {%config%}
-                {%scripts%}
-                {%renderer%}
-            </footer>
-        </body>
-    </div>
+    <body class="jumbotron rounded" style="padding-top:100px">
+    <h1 class="display-4 mx-auto" style="text-align:center">THIS IS A TEST SERVER</h1>
+    {%app_entry%}
+    <footer>
+        {%config%}
+        {%scripts%}
+        {%renderer%}
+    </footer>
+    </body>
 </html>
 """
 
