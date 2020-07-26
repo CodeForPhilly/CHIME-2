@@ -1,7 +1,9 @@
-import dash_html_components as html
+# -*- coding: utf-8 -*-
+"""Card tabs, brings together various tabs."""
 import dash_bootstrap_components as dbc
+import dash_html_components as html
 
-from app.dashboard.tab import census, parameter, report, upload
+from app.dashboard.tab import census, parameter, report, upload  # noqa
 
 content = dbc.Card(
     [

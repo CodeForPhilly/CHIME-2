@@ -2,11 +2,10 @@
 """Dashboard built using plotly-dash."""
 import dash
 from dash_bootstrap_components.themes import BOOTSTRAP
-from dash.dependencies import Input, State, Output
 
-from app.settings import ROOT_PATH
 from app.dashboard import page
 from app.dashboard.customization import custom_index_str
+from app.settings import ROOT_PATH
 
 
 def register_dashboard(app):
@@ -17,9 +16,8 @@ def register_dashboard(app):
         BOOTSTRAP,
         "https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;1,400;1,600&display=swap",
     ]
-    external_scripts = [
-        str(ROOT_PATH + "/static/main_js.bundle.js")
-    ]
+    # Javascript scripts TODO: Inject CSRF token
+    external_scripts = [str(ROOT_PATH + "/static/main_js.bundle.js")]
     # Meta tags for viewport responsiveness
     meta_viewport = {
         "name": "viewport",
@@ -32,18 +30,18 @@ def register_dashboard(app):
         # url_base_pathname="/dashboard/",
         external_stylesheets=external_stylesheets,
         external_scripts=external_scripts,
-        url_base_pathname='/dashboard/',
-        assets_folder=ROOT_PATH+'/static/build/img/',
+        url_base_pathname="/dashboard/",
+        assets_folder=ROOT_PATH + "/static/build/img/",
         meta_tags=[meta_viewport],
         index_string=custom_index_str,
-        suppress_callback_exceptions=True
+        suppress_callback_exceptions=True,
     )
 
     with app.app_context():
         from app.dashboard.callback import register_callbacks
+
         dashboard.layout = page.layout
         register_callbacks(dashboard=dashboard)
-
 
     # _protect_dashboard(dashboard)
 

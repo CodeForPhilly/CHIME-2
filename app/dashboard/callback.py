@@ -1,11 +1,15 @@
-from flask import session
+# -*- coding: utf-8 -*-
+"""Dashboard Callbacks."""
 from dash.dependencies import Input, Output, State
+from flask import session
 
-from .tab import parameter, census, upload, report
 from .service.upload import parse_contents
+from .tab import census, parameter, report, upload
 
 
 def register_callbacks(dashboard):
+    """Wrap the dash app with the various callbacks."""
+
     @dashboard.callback(
         Output("card-content", "children"), [Input("card-tabs", "active_tab")]
     )
@@ -33,7 +37,8 @@ def register_callbacks(dashboard):
             return children
 
     @dashboard.callback(
-        Output('header_current_user', 'children'),
-        [Input('header_user_output', 'children')])
+        Output("header_current_user", "children"),
+        [Input("header_user_output", "children")],
+    )
     def get_session_user(children):
-        return session.get('username', None)
+        return session.get("username", None)

@@ -3,8 +3,8 @@
 
 Locally these variables can be set with `source .env`
 """
-import os
 from pathlib import Path
+
 from environs import Env
 
 env = Env()
