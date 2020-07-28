@@ -7,7 +7,7 @@ from app.auth.form import RegisterForm
 from app.blueprints import auth_user
 from app.extension import login_manager
 from app.models.user import User
-from app.utils import flash_errors
+from app.util import flash_errors
 
 
 @login_manager.user_loader

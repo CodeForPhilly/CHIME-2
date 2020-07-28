@@ -17,8 +17,9 @@ More information / instructions about using model parameters here.
 """
 )
 
-row = html.Div(className='card-deck',
-               children=[param_group.container for param_group in input_groups.values()]
-               )
+row = html.Div(
+    className="card-deck",
+    children=[param_group.container for param_group in input_groups.values()],
+)
 
 tab_layout = dbc.Card(dbc.CardBody([tab_header, row]))

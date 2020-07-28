@@ -30,8 +30,9 @@ def _factory(view_module_path: str, blueprint_url_path: str):
     return blueprint
 
 
-homepage_index = _factory("homepage.index", "/")
 auth_user = _factory("auth.user", "/auth")
+dashboard_route = _factory("dashboard.route", "/dashboard")
+homepage_index = _factory("homepage.index", "/")
 user_profile = _factory("user.profile", "/users")
 
-application_blueprints = (homepage_index, auth_user, user_profile)
+application_blueprints = (homepage_index, auth_user, dashboard_route, user_profile)

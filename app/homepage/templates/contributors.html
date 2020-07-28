@@ -1,8 +1,25 @@
 {% extends "layout.html" %}
 
+{% block page_title %} CHIME 2 Dashboard {% endblock page_title %}
+
+{% block css %}
+    {{ super() }}
+{% endblock css %}
+
 {% block content %}
-    <div class="container-fluid mt-5">
-        <h1 class="display-4" style="text-align:center;"><strong>Contributors</strong>
-        </h1>
+    <div class="right_col" role="main">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="dashboard_graph">
+                    <div style="width: 100%; min-height:800px;">
+                        <iframe noresize="noresize" frameborder="0"
+                                style="position: absolute; background: transparent; width: 95%; height:100%;"
+                                src={{ dash_url }}>
+                        </iframe>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
