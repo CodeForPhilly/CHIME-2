@@ -8,7 +8,7 @@ from flask import Flask, render_template
 
 from app import commands, user
 from app.blueprints import application_blueprints
-from app.dashboard import register_dashboard
+from app.dashboard.factory import register_dashboard
 from app.extension import (
     bcrypt,
     cache,
@@ -23,7 +23,7 @@ from app.extension import (
 __all__ = ["create_app"]
 
 
-def create_app(config_object="app.settings"):
+def create_app(config_object="app.config"):
     """Create application factory, as explained here: http://flask.pocoo.org/docs/patterns/appfactories/.
 
     :param config_object: The configuration object to use.
