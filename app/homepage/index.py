@@ -12,7 +12,7 @@ from flask_login import login_user
 
 from app.auth.form import LoginForm
 from app.blueprints import homepage_index
-from app.utils import flash_errors
+from app.util import flash_errors
 
 
 @homepage_index.route("/", methods=["GET", "POST"])
