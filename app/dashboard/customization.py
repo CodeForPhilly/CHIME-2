@@ -36,18 +36,19 @@ _custom_nav = """
         </div>
     </div>
 """
-
-_custom_index_str = """
-<!DOCTYPE html>
-<html>
-    <head>  
-        {%metas%}
-        <title>{%title%}</title>
-        {%favicon%}
-        {%css%}
-    </head>
-    <body class="jumbotron rounded" style="padding-top:100px">
-    """ + _custom_nav + """
+# fmt: off
+_custom_index_str = (
+    """
+    <!DOCTYPE html>
+    <html>
+        <head>  
+            {%metas%}
+            <title>{%title%}</title>
+            {%favicon%}
+            {%css%}
+        </head>
+        <body class="jumbotron rounded" style="padding-top:100px">
+        """ + _custom_nav + """
     <h1 class="display-4 mx-auto" style="text-align:center">THIS IS A TEST SERVER</h1>
     {%app_entry%}
     <footer>
@@ -58,3 +59,5 @@ _custom_index_str = """
     </body>
 </html>
 """
+)
+# fmt: on

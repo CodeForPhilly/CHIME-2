@@ -58,5 +58,6 @@ env/
 # Development database
 *.db
 
-# Poetry
+# Lock files
 poetry.lock
+package-lock.json
