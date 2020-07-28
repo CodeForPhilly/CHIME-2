@@ -4,7 +4,7 @@ language: python
 python:
   - 3.6
   - 3.7
-script: cd web && pip install -r requirements.txt && nvm install 12 && nvm use 12 && npm install && cp .env.example
+script: cd web && pip install -r requirements/dev.txt && nvm install 12 && nvm use 12 && npm install && cp .env.example
   .env &&
   source .env
   && npm run lint && flask lint --check && flask test
