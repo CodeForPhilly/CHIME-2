@@ -41,7 +41,7 @@ _custom_index_str = (
     """
     <!DOCTYPE html>
     <html>
-        <head>  
+        <head>
             {%metas%}
             <title>{%title%}</title>
             {%favicon%}
