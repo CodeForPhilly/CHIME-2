@@ -1,29 +1,29 @@
 {
-   "name": "src",
-   "env": {
-      "SECRET_KEY": {
-         "description": "SECRET_KEY.",
-         "generator": "secret"
-      },
-      "FLASK_APP": {
-         "description": "FLASK_APP.",
-         "value": "manage.py"
+  "name": "src",
+  "env": {
+    "SECRET_KEY": {
+      "description": "SECRET_KEY.",
+      "generator": "secret"
+    },
+    "FLASK_APP": {
+      "description": "FLASK_APP.",
+      "value": "manage.py"
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    },
+    {
+      "url": "heroku/python"
+    }
+  ],
+  "addons": [
+    {
+      "plan": "heroku-postgresql:hobby-dev",
+      "options": {
+        "version": "11"
       }
-   },
-   "buildpacks": [
-      {
-         "url": "heroku/nodejs"
-      },
-      {
-         "url": "heroku/python"
-      }
-   ],
-   "addons": [
-      {
-         "plan": "heroku-postgresql:hobby-dev",
-         "options": {
-            "version": "11"
-         }
-      }
-   ]
+    }
+  ]
 }
