@@ -1,87 +1,94 @@
 {
-  "dayOneHospitalized": {
-    "title": "Day One Hospitalizations",
-    "param_key": "n_hosp",
-    "dataType": "int",
-    "distribution": "constant",
-    "description": "Number of hospitalized Covid-19 patients on day 1."
-  },
   "admissionProportions": {
+    "groupLabel": "Intake Proportions",
     "Hospitalized": {
-      "title": "Proportion Hospitalized",
+      "label": "Hospitalized",
       "param_key": "hosp_prop",
       "dataType": "float",
       "distribution": "gamma",
-      "description": "Proportion of infections requiring hospitalization."
+      "title": "Proportion of infections requiring hospitalization."
     },
     "ICU": {
-      "title": "Proportion ICU",
+      "label": "Intensive Care",
       "param_key": "ICU_Prop",
       "dataType": "float",
       "distribution": "beta",
-      "description": "Proportion of hospitalizations admitted to the ICU"
+      "title": "Proportion of hospitalizations admitted to the ICU"
     },
     "vent": {
-      "title": "Proportion Ventilatory",
+      "label": "Ventilatory",
       "param_key": "vent_prop",
       "dataType": "float",
       "distribution": "beta",
-      "description": "Proportion of ICU patients requiring ventilation"
+      "title": "Proportion of ICU patients requiring ventilation"
     }
   },
   "lengthOfStay": {
+    "groupLabel": "Lengths of Stay",
     "Hospitalized": {
-      "title": "Hospitalized Average Length of Stay",
+      "label": "Hospitalized",
       "param_key": "hosp_LOS",
       "dataType": "int",
       "distribution": "gamma",
-      "description": "Average number of days a patient is hospitalized."
+      "title": "Average number of days a patient is hospitalized."
     },
     "ICU": {
-      "title": "ICU Average Length of Stay",
+      "label": "Intensive Care",
       "param_key": "ICU_LOS",
       "dataType": "int",
       "distribution": "gamma",
-      "description": "Average number of days a patient is in ICU."
+      "title": "Average number of days a patient is in ICU."
     },
     "vent": {
-      "title": "Ventilatory Average Length of Stay",
+      "label": "Ventilatory",
       "param_key": "vent_LOS",
       "dataType": "float",
       "distribution": "gamma",
-      "description": "Average number of days a patient requires ventilatory intervention."
+      "title": "Average number of days a patient requires ventilatory intervention."
     }
   },
   "epidemiological": {
+    "groupLabel": "Epidemiological",
     "incubationDays": {
-      "title": "Incubation Days",
+      "label": "Incubation Days",
       "param_key": "incubation_days",
       "dataType": "int",
       "distribution": "gamma",
-      "description": "Days from exposure to infectiousness."
+      "title": "Days from exposure to infectiousness."
     },
     "recoveryDays": {
-      "title": "Recovery Days",
+      "label": "Recovery Days",
       "param_key": "recovery_days",
       "dataType": "int",
       "distribution": "gamma",
-      "description": "Days from infection to recovery"
+      "title": "Days from infection to recovery"
     }
   },
-  "network": {
+  "hospital": {
+    "groupLabel": "Hospital",
+    "dayOneHospitalized": {
+      "label": "Day One Hospitalizations",
+      "param_key": "n_hosp",
+      "dataType": "int",
+      "distribution": "constant",
+      "title": "Number of hospitalized Covid-19 patients on day 1."
+    },
     "marketShare": {
-      "title": "Market Share (%)",
+      "param_group": "network",
+      "label": "Market Share (%)",
       "param_key": "mkt_share",
       "dataType": "float",
       "distribution": "constant",
-      "description": "Hospital or network market share percentage."
+      "title": "Hospital or network market share percentage."
     },
     "regionalPopulation": {
-      "title": "Regional Population",
+      "param_group": "network",
+      "label": "Regional Population",
       "param_key": "region_pop",
       "dataType": "int",
       "distribution": "constant",
-      "description": "Total population size of the catchment region of your hospital or network."
+      "title": "Total population size of the catchment region of your hospital or network."
     }
   }
 }
+
