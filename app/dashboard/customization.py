@@ -1,15 +1,7 @@
 # -*- coding: utf-8 -*-
 """Tools for overloading dash objects."""
 
-custom_index_str = """
-<!DOCTYPE html>
-<html>
-    <head>
-        {%metas%}
-        <title>{%title%}</title>
-        {%favicon%}
-        {%css%}
-    </head>
+_custom_nav = """
     <div class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <a class="navbar-brand" href="https://www.pennmedicine.org/">
             <img class="container"
@@ -43,7 +35,19 @@ custom_index_str = """
             </ul>
         </div>
     </div>
+"""
+
+_custom_index_str = """
+<!DOCTYPE html>
+<html>
+    <head>  
+        {%metas%}
+        <title>{%title%}</title>
+        {%favicon%}
+        {%css%}
+    </head>
     <body class="jumbotron rounded" style="padding-top:100px">
+    """ + _custom_nav + """
     <h1 class="display-4 mx-auto" style="text-align:center">THIS IS A TEST SERVER</h1>
     {%app_entry%}
     <footer>
