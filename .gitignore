@@ -10,6 +10,7 @@ build
 eggs
 parts
 scripts
+!/chime2/chime2/normal/scripts
 var
 sdist
 develop-eggs
@@ -64,3 +65,14 @@ package-lock.json
 
 # chime2 output directory
 output/
+
+# LaTeX and bbl
+notes.aux
+notes.log
+xetex_import.sty
+notes.bbl
+notes.blg
+notes.out
+notes.synctex.gz
+notesNotes.bib
+notes.pdf
