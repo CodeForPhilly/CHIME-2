@@ -1,5 +1,5 @@
 {
-  "name": "CHIME-2",
+  "name": "chime-2",
   "version": "1.0.0",
   "description": "Covid-19 Hospital Impact Model for Epidemics 2",
   "scripts": {
@@ -21,7 +21,7 @@
     "url": "git+https://github.com/CodeforPhilly/CHIME-2.git"
   },
   "author": "Brian Ross",
-  "license": "MIT",
+  "license": "BSD-3-Clause",
   "engines": {
     "node": "12.18.2"
   },
