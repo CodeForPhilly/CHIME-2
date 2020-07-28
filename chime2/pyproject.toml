@@ -7,6 +7,10 @@ license = "BSD-3-Clause"
 
 [tool.poetry.dependencies]
 python = "^3.6.9"
+pandas = "^1.0.5"
+numpy = "^1.19.1"
+gvar = "^11.7"
+lsqfit = "^11.6"
 
 
 [tool.poetry.dev-dependencies]
