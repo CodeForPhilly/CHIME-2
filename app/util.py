@@ -20,6 +20,7 @@ def load_html(html_file: str):
 
 
 def load_json(json_file: str):
+    """Load json file."""
     with open(json_file, "r") as f:
         contents = json.load(f)
     return contents

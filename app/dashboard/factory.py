@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 """Dashboard built using plotly-dash."""
 import dash
-from flask_login import login_required
 from dash_bootstrap_components.themes import BOOTSTRAP
+from flask_login import login_required
 
+from app.config import ROOT_PATH
 from app.dashboard import page
 from app.dashboard.customization import _custom_index_str
-from app.config import ROOT_PATH
 
 DASH_URL = "/dashboard/"
 
@@ -41,6 +41,7 @@ def register_dashboard(app):
 
     with app.app_context():
         from app.dashboard.callback import register_callbacks
+
         dashboard.layout = page.layout
         register_callbacks(dashboard=dashboard)
 
@@ -51,5 +52,8 @@ def _protect_dashboard(dashboard):
     for view_func in dashboard.server.view_functions:
         if view_func.startswith(dashboard.config.url_base_pathname):
             dashboard.server.view_functions[view_func] = login_required(
-                dashboard.server.view_functions[view_func])
+                dashboard.server.view_functions[view_func]
+            )
+
+
 #             )
