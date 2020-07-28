@@ -61,3 +61,6 @@ web/app/static/build/
 # Lock files
 poetry.lock
 package-lock.json
+
+# chime2 output directory
+output/
