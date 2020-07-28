@@ -47,10 +47,10 @@ docs/_build
 env/
 
 # npm
-/node_modules/
+web/node_modules/
 
 # webpack-built files
-/app/static/build/
+web/app/static/build/
 
 # Configuration
 .env
