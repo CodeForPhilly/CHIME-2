@@ -1,0 +1,11 @@
+{
+  // Model Parameters
+  "modelParameters": {
+    "key": [base, p1, p2]
+  },
+  // Time Series Data
+  "timeSeriesData": {
+    "YYYY-MM-DD": [hospitalized, ventilated],
+    "YYYY-MM-DD": [hospitalized, ventilated]
+  }
+}
