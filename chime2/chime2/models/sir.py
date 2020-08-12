@@ -6,7 +6,7 @@ from numpy import NaN, log
 from pandas import DataFrame
 
 from chime2.models.base import CompartmentModel
-from chime2.util import FloatOrDistVar, NormalDistVar
+from chime2._typing import FloatOrDistVar, NormalDistVar
 
 
 class SIRModel(CompartmentModel):
