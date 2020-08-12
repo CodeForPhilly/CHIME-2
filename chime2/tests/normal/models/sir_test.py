@@ -12,8 +12,13 @@ from pandas.testing import assert_frame_equal, assert_series_equal
 from bayes_chime.normal.models import SIRModel
 from bayes_chime.normal.utilities import one_minus_logistic_fcn
 from penn_chime.model.parameters import Disposition, Parameters
-from penn_chime.model.sir import (Sir, calculate_admits, calculate_census,
-                                  calculate_dispositions, sim_sir)
+from penn_chime.model.sir import (
+    Sir,
+    calculate_admits,
+    calculate_census,
+    calculate_dispositions,
+    sim_sir,
+)
 from pytest import fixture
 
 PENN_CHIME_COMMIT = "188c35be9561164bedded4a8071a320cbde0d2bc"

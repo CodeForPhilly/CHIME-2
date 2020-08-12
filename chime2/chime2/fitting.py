@@ -8,8 +8,12 @@ from pandas import DataFrame
 from scipy.optimize import curve_fit
 from scipy.stats import beta, gamma, norm
 
-from ._typing import (FloatLikeArray, FloatOrDistVar, NormalDistVar,
-                      ScipyContinuousDistribution)
+from ._typing import (
+    FloatLikeArray,
+    FloatOrDistVar,
+    NormalDistVar,
+    ScipyContinuousDistribution,
+)
 
 
 def fit_norm_dist_to_ens(
@@ -17,8 +21,8 @@ def fit_norm_dist_to_ens(
 ) -> NormalDistVar:
     """Approximate ensemble (random vector) by normal distribution.
 
-    if thresh is specified, infers how much results deviate from median
-    and cuts out outliers with modified z_score > thresh.
+    If a thresh hold is specified, infer how much results deviate from
+    median and remove outliers exceeding the standard score.
     """
     if thresh:
         d = sqrt((x - median(x)) ** 2)

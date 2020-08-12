@@ -21,11 +21,20 @@ from scipy.stats import expon, probplot
 
 from _01_GOF_sims import do_chains
 from bayes_chime.normal.models import SEIRModel
-from bayes_chime.normal.scripts.utils import (DEBUG, dump_results, get_logger,
-                                              read_data, read_parameters)
-from bayes_chime.normal.utilities import (FloatLike, FloatOrDistVar,
-                                          NormalDistArray, NormalDistVar,
-                                          one_minus_logistic_fcn)
+from bayes_chime.normal.scripts.utils import (
+    DEBUG,
+    dump_results,
+    get_logger,
+    read_data,
+    read_parameters,
+)
+from bayes_chime.normal.utilities import (
+    FloatLike,
+    FloatOrDistVar,
+    NormalDistArray,
+    NormalDistVar,
+    one_minus_logistic_fcn,
+)
 
 pd.options.display.max_rows = 4000
 pd.options.display.max_columns = 4000

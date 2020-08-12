@@ -10,8 +10,12 @@ from numpy import array, linspace, where
 from pandas import DataFrame
 from seaborn import distplot
 
-from chime2.fitting import (fit_norm_dist_to_dist, fit_norm_dist_to_ens,
-                            gv_to_dist, parse_dist)
+from chime2.fitting import (
+    fit_norm_dist_to_dist,
+    fit_norm_dist_to_ens,
+    gv_to_dist,
+    parse_dist,
+)
 from chime2.util import NormalDistArray, NormalDistVar
 
 Axes = TypeVar("Axes")
@@ -46,8 +50,8 @@ def plot_posterior_fit(**kwargs):
 
 
 def plot_gv_dist(gvar: NormalDistVar, **kwargs):
-    """Plots pdf of gvar
-    """
+    """Plots pdf of ``gvar``."""
+
     ax = kwargs.pop("ax", get_current_actor())
 
     normal = gv_to_dist(gvar)
@@ -64,7 +68,7 @@ def plot_gvar(
     y_min: Optional[float] = None,
     **kwargs
 ) -> Axes:
-    """Plots gvar as a band.
+    """Plots ``gvar`` as a band.
 
     Arguments:
         line_kws: Kwargs specific for line plot

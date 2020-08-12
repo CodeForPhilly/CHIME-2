@@ -15,4 +15,4 @@ class CHIME2(object):
 
     def fit(self, data: Dict[str, Dict[str, str]]) -> None:
 
-        self._params = data['parameter']
+        self._params = data["parameter"]
