@@ -10,21 +10,18 @@ from numpy import array, linspace, where
 from pandas import DataFrame
 from seaborn import distplot
 
-from chime2.fitting import (
+from .fitting import (
     fit_norm_dist_to_dist,
     fit_norm_dist_to_ens,
     gv_to_dist,
     parse_dist,
 )
-from chime2.util import NormalDistArray, NormalDistVar
-
-Axes = TypeVar("Axes")
-Figure = TypeVar("Figure")
+from ._typing import Axes, Figure, NormalDistVar, NormalDistArray
 
 
 def plot_prior_fit(**kwargs):
-    """Parses distribution from meta parameters and plots exact distribution and
-    normal fit
+    """Parse distribution from meta-parameters and plot exact distribution
+    and normal fit.
     """
     data = kwargs["data"].iloc[0].to_dict()
     dist = parse_dist(data)
@@ -45,7 +42,8 @@ def plot_posterior_fit(**kwargs):
     x = kwargs["data"].x.values
     distplot(a=x, kde=False, ax=ax, hist_kws={"density": True})
     plot_gv_dist(
-        fit_norm_dist_to_ens(x, thresh=kwargs.get("thresh", None)), ax=ax, color="black"
+        fit_norm_dist_to_ens(x, thresh=kwargs.get("thresh", None)), ax=ax,
+        color="black"
     )
 
 
@@ -63,12 +61,12 @@ def plot_gv_dist(gvar: NormalDistVar, **kwargs):
 
 
 def plot_gvar(
-    line_kws: Dict[str, Any] = None,
-    fill_kws: Dict[str, Any] = None,
-    y_min: Optional[float] = None,
-    **kwargs
+        line_kws: Dict[str, Any] = None,
+        fill_kws: Dict[str, Any] = None,
+        y_min: Optional[float] = None,
+        **kwargs
 ) -> Axes:
-    """Plots ``gvar`` as a band.
+    """Plot ``gvar`` as a band.
 
     Arguments:
         line_kws: Kwargs specific for line plot
@@ -99,12 +97,12 @@ def plot_gvar(
 
 
 def plot_band(
-    line_kws: Dict[str, Any] = None,
-    fill_kws: Dict[str, Any] = None,
-    y_min: Optional[float] = None,
-    **kwargs
+        line_kws: Dict[str, Any] = None,
+        fill_kws: Dict[str, Any] = None,
+        y_min: Optional[float] = None,
+        **kwargs
 ) -> Axes:
-    """Plots gvar as a band.
+    """Plot gvar as a band.
 
     Arguments:
         line_kws: Kwargs specific for line plot
@@ -136,25 +134,30 @@ def plot_band(
 
 
 def plot_fit(  # pylint: disable=R0914
-    fit_df: DataFrame,
-    columns: List[List[str]],
-    data: Optional[Dict[str, NormalDistArray]] = None,
+        fit_df: DataFrame,
+        columns: List[List[str]],
+        data: Optional[Dict[str, NormalDistArray]] = None,
 ) -> Figure:
-    """Creates a grid plot for fitted model
+    """Create a grid plot for fitted model.
 
-    Arguments:
-        fit_df: The CompartmentModel prediction to plot
-        columns: The columns to plot aranged as the desired grid
-        data: If present, matches col name against data and plots in the same frame.
-            Assumes data has the same time values as the corresponding fit_df but end
-            earlier.
+    :param fit_df: The ``CompartmentalModel`` prediction to plot
+    :type fit_df: pandas.core.DataFrame
+
+    :param columns: The columns to plot arranged as the desired grid.
+    :type columns: List[List[str]]
+
+    :param data: If present, matches col name against data and plots in
+        the same frame. Assumes data has the same time values as the
+        corresponding fit_df but end earlier.
+    :type data: Optional[Dict[str, NormalDistArray]]
     """
-    nrows, ncols = array(columns).shape
+    n_rows, n_cols = array(columns).shape
 
     data = data or {}
 
     fig, axs = subplots(
-        ncols=ncols, nrows=nrows, figsize=(8 * ncols, 5 * nrows), sharex=True
+        ncols=n_cols, nrows=n_rows, figsize=(8 * n_cols, 5 * n_rows),
+        sharex=True
     )
 
     gv_kws = {"zorder": 10, "lw": 3}
@@ -197,7 +200,8 @@ def plot_fit(  # pylint: disable=R0914
             if ic == 0 == ir:
                 ax.legend(loc="upper left")
 
-    fig.suptitle("Normal PDF at 50% C.I.", y=1.02, fontsize=12, fontweight="bold")
+    fig.suptitle("Normal PDF at 50% C.I.", y=1.02, fontsize=12,
+                 fontweight="bold")
     fig.autofmt_xdate()
     fig.tight_layout()
 

@@ -17,7 +17,7 @@ from ._typing import (
 
 
 def fit_norm_dist_to_ens(
-    x: FloatLikeArray, thresh: Optional[float] = None
+        x: FloatLikeArray, thresh: Optional[float] = None
 ) -> NormalDistVar:
     """Approximate ensemble (random vector) by normal distribution.
 
@@ -77,7 +77,8 @@ def fit_norm_to_prior_df(prior_df: DataFrame) -> Dict[str, FloatOrDistVar]:
     for _, row in prior_df.iterrows():
         dist = parse_dist(row)
         priors[row["param"]] = (  # account for constant dist
-            dist if isinstance(dist, float) else fit_norm_dist_to_dist(dist)
+            dist if isinstance(dist,
+                               float) else fit_norm_dist_to_dist(dist)
         )
 
     return priors

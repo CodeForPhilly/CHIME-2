@@ -14,5 +14,9 @@ NormalDistArray = TypeVar("NormalDistArray")
 
 ScipyContinuousDistribution = TypeVar("ScipyContinuousDistribution")
 
+# plotting
+Axes = TypeVar("Axes")
+Figure = TypeVar("Figure")
+
 FloatOrDistVar = Union[FloatLike, NormalDistVar]
 FloatOrDistArray = Union[FloatLikeArray, NormalDistArray]
