@@ -7,7 +7,8 @@ from typing import Callable, Dict, Generator, List, Optional
 
 from pandas import DataFrame, DatetimeIndex, infer_freq
 
-from chime2.util import FloatLike, FloatOrDistVar, NormalDistArray, NormalDistVar
+from chime2.util import (FloatLike, FloatOrDistVar, NormalDistArray,
+                         NormalDistVar)
 
 
 class CompartmentModel(ABC):

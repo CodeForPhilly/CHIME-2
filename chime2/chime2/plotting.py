@@ -10,12 +10,8 @@ from numpy import array, linspace, where
 from pandas import DataFrame
 from seaborn import distplot
 
-from chime2.fitting import (
-    fit_norm_dist_to_dist,
-    fit_norm_dist_to_ens,
-    gv_to_dist,
-    parse_dist,
-)
+from chime2.fitting import (fit_norm_dist_to_dist, fit_norm_dist_to_ens,
+                            gv_to_dist, parse_dist)
 from chime2.util import NormalDistArray, NormalDistVar
 
 Axes = TypeVar("Axes")

@@ -8,10 +8,8 @@ from pandas.testing import assert_frame_equal, assert_series_equal
 from bayes_chime.normal.models import SEIRModel, SIRModel
 from pytest import fixture
 from tests.normal.models.sir_test import (  # pylint: disable=W0611
-    fixture_penn_chime_raw_df_no_policy,
-    fixture_penn_chime_setup,
-    fixture_sir_data_wo_policy,
-)
+    fixture_penn_chime_raw_df_no_policy, fixture_penn_chime_setup,
+    fixture_sir_data_wo_policy)
 
 COLS_TO_COMPARE = [
     "susceptible",

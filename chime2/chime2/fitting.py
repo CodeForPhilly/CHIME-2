@@ -8,9 +8,8 @@ from pandas import DataFrame
 from scipy.optimize import curve_fit
 from scipy.stats import beta, gamma, norm
 
-from .util import FloatLikeArray, FloatOrDistVar, NormalDistVar
-
-ScipyContinuousDistribution = TypeVar("ScipyContinuousDistribution")
+from ._typing import (FloatLikeArray, FloatOrDistVar, NormalDistVar,
+                      ScipyContinuousDistribution)
 
 
 def fit_norm_dist_to_ens(
