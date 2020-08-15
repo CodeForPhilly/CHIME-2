@@ -9,6 +9,12 @@ from chime2.models.base import CompartmentModel
 from chime2._typing import FloatOrDistVar, NormalDistVar
 
 
+class SIR(CompartmentModel):
+
+
+
+
+
 class SIRModel(CompartmentModel):
     """Basic SIR model
     """

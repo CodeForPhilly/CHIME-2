@@ -21,7 +21,7 @@ def fit_norm_dist_to_ens(
 ) -> NormalDistVar:
     """Approximate ensemble (random vector) by normal distribution.
 
-    If a thresh hold is specified, infer how much results deviate from
+    If a threshold is specified, infer how much results deviate from
     median and remove outliers exceeding the standard score.
     """
     if thresh:
@@ -33,8 +33,7 @@ def fit_norm_dist_to_ens(
 
 
 def fit_norm_dist_to_dist(dist: ScipyContinuousDistribution) -> NormalDistVar:
-    """Approximates distribution by normal distribution
-    """
+    """Approximate distribution by normal distribution."""
     x = linspace(dist.ppf(0.01), dist.ppf(0.99), 100)
     y = dist.pdf(x)
     mu, var = dist.stats(moments="mv")
@@ -44,8 +43,7 @@ def fit_norm_dist_to_dist(dist: ScipyContinuousDistribution) -> NormalDistVar:
 
 
 def parse_dist(data: Dict[str, Any]) -> ScipyContinuousDistribution:
-    """Parses prior frame data to distribution
-    """
+    """Parse distributions from priors DataFrame."""
     distribution = data["distribution"]
     if distribution == "beta":
         dist = beta(a=data["p1"], b=data["p2"])

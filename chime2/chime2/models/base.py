@@ -7,7 +7,8 @@ from typing import Callable, Dict, Generator, List, Optional
 
 from pandas import DataFrame, DatetimeIndex, infer_freq
 
-from chime2.util import FloatLike, FloatOrDistVar, NormalDistArray, NormalDistVar
+from chime2._typing import FloatLike, FloatOrDistVar, NormalDistArray, \
+    NormalDistVar
 
 
 class CompartmentModel(ABC):
@@ -32,7 +33,7 @@ class CompartmentModel(ABC):
     compartments: List[str] = []
 
     def parse_input(  # pylint: disable=R0201
-        self, **pars: Dict[str, FloatOrDistVar]
+            self, **pars: Dict[str, FloatOrDistVar]
     ) -> Dict[str, FloatOrDistVar]:
         """Parses parameters before fitting. This should include, e.g., type conversions
 
@@ -51,7 +52,7 @@ class CompartmentModel(ABC):
         return pars
 
     def post_process_simulation(  # pylint: disable=R0201, W0613, C0103
-        self, df: DataFrame, **pars: Dict[str, FloatOrDistVar]
+            self, df: DataFrame, **pars: Dict[str, FloatOrDistVar]
     ) -> DataFrame:
         """Processes the final simulation result. This can add, e.g., new columns
         """
@@ -60,7 +61,7 @@ class CompartmentModel(ABC):
     @staticmethod
     @abstractmethod
     def simulation_step(
-        data: Dict[str, NormalDistVar], **pars: Dict[str, FloatOrDistVar]
+            data: Dict[str, NormalDistVar], **pars: Dict[str, FloatOrDistVar]
     ):
         """This function implements the actual simulation
 
@@ -79,13 +80,13 @@ class CompartmentModel(ABC):
     # ----------------------------------------------------------
 
     def __init__(
-        self,
-        fit_columns: Optional[List[str]] = None,
-        update_parameters: Callable[
-            [Date, Dict[str, FloatOrDistVar]], Dict[str, FloatOrDistVar]
-        ] = None,
-        fit_start_date: Optional[Date] = None,
-        debug: bool = False,
+            self,
+            fit_columns: Optional[List[str]] = None,
+            update_parameters: Callable[
+                [Date, Dict[str, FloatOrDistVar]], Dict[str, FloatOrDistVar]
+            ] = None,
+            fit_start_date: Optional[Date] = None,
+            debug: bool = False,
     ):
         """Initializes the compartment model
         update function
@@ -117,7 +118,8 @@ class CompartmentModel(ABC):
         self.debug = debug
 
     def propagate_uncertainties(
-        self, meta_pars: Dict[str, FloatLike], dist_pars: Dict[str, NormalDistVar]
+            self, meta_pars: Dict[str, FloatLike],
+            dist_pars: Dict[str, NormalDistVar]
     ) -> DataFrame:
         """Propagates uncertainties through simulation
 
@@ -133,7 +135,7 @@ class CompartmentModel(ABC):
         return self.post_process_simulation(df, **pars)
 
     def _iterate_simulation(
-        self, **pars: Dict[str, FloatOrDistVar],
+            self, **pars: Dict[str, FloatOrDistVar],
     ) -> Generator[Dict[str, NormalDistVar], None, None]:
         """Iterates model to build up SIR data
 
@@ -144,7 +146,8 @@ class CompartmentModel(ABC):
             pars: Model meta and flexible parameters
         """
         data = {
-            compartment: pars["initial_{compartment}".format(compartment=compartment)]
+            compartment: pars[
+                "initial_{compartment}".format(compartment=compartment)]
             for compartment in self.compartments
         }
         for date in pars["dates"]:
@@ -154,7 +157,7 @@ class CompartmentModel(ABC):
             data = self.simulation_step(data, **inp_pars)
 
     def fit_fcn(  # pylint: disable=C0103
-        self, xx: Dict[str, FloatLike], pp: Dict[str, NormalDistVar]
+            self, xx: Dict[str, FloatLike], pp: Dict[str, NormalDistVar]
     ) -> NormalDistArray:
         """Wrapper for propagate_uncertainties used for lsqfit.nonlinear_fit function
 
@@ -172,7 +175,7 @@ class CompartmentModel(ABC):
 
         df = self.propagate_uncertainties(xx, pp)
         if self.fit_start_date:
-            df = df.loc[self.fit_start_date :]
+            df = df.loc[self.fit_start_date:]
         if self.fit_columns:
             df = df[self.fit_columns]
 
@@ -182,10 +185,10 @@ class CompartmentModel(ABC):
         return df.values if df.values.shape[0] > 1 else df.values.flatten()
 
     def check_call(  # pylint: disable=C0103
-        self,
-        xx: Dict[str, FloatLike],
-        yy: NormalDistArray,
-        pp: Dict[str, NormalDistVar],
+            self,
+            xx: Dict[str, FloatLike],
+            yy: NormalDistArray,
+            pp: Dict[str, NormalDistVar],
     ):
         """Checks if model meta parameters and priors are set as expected to use fitter.
 
@@ -201,7 +204,8 @@ class CompartmentModel(ABC):
         if common_pars:
             raise KeyError(
                 "Fixed and variable model paramers have shared variables:"
-                " {common_pars}. This is not allowed.".format(common_pars=common_pars)
+                " {common_pars}. This is not allowed.".format(
+                    common_pars=common_pars)
             )
 
         yy_fit = self.fit_fcn(xx, pp)

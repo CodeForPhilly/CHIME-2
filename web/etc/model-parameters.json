@@ -62,6 +62,13 @@
       "dataType": "int",
       "distribution": "gamma",
       "title": "Days from infection to recovery"
+    },
+    "initialDoublingTime":{
+      "label": "Initial Doubling Time",
+      "param_key": "initial_doubling_time",
+      "dataType": "float",
+      "distribution": "gamma",
+      "title": ""
     }
   },
   "hospital": {
@@ -74,15 +81,16 @@
       "title": "Number of hospitalized Covid-19 patients on day 1."
     },
     "marketShare": {
-      "param_group": "network",
       "label": "Market Share (%)",
       "param_key": "mkt_share",
       "dataType": "float",
       "distribution": "constant",
       "title": "Hospital or network market share percentage."
-    },
+    }
+  },
+  "regional": {
+    "groupLabel": "Regional Parameters",
     "regionalPopulation": {
-      "param_group": "network",
       "label": "Regional Population",
       "param_key": "region_pop",
       "dataType": "int",
@@ -91,4 +99,3 @@
     }
   }
 }
-
