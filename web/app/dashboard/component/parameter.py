@@ -97,6 +97,7 @@ class ParameterGroup(object):
 def build_parameter_inputs():
     """Build the component groups from `model-parameters.json` configuration file."""
     component_groups = {}
+
     for meta in PARAMETER_META.values():
         group_key = re.sub(r" ", r"-", meta["groupLabel"]).lower()
         component_groups[f"{group_key}"] = ParameterGroup(parameter_group=meta)
