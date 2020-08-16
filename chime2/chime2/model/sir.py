@@ -12,7 +12,7 @@ from typing import Set
 
 from model._base import CompartmentalModel
 
-_model_compartments: Set[str] = {'susceptible', 'infected', 'recovered'}
+_model_compartments: Set[str] = {"susceptible", "infected", "recovered"}
 _model_parameters: Set[str] = {}
 
 
@@ -23,15 +23,12 @@ class SIR(CompartmentalModel):
     =======================
     """
 
-    def __init__(self):
+    def __init__(self, pathogen: str):
 
-        super().__init__(compartments=_model_compartments)
+        super().__init__(compartments=_model_compartments, pathogen=pathogen)
 
-    @property
-    def compartments(self):
-        return self._compartments
-
-print(SIR().compartments)
+    def step(self):
+        """One iteration of the model function."""
 
 
-
+print(SIR(pathogen="Covid").pathogen.recovery_period)

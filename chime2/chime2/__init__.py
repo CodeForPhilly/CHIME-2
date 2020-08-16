@@ -6,3 +6,6 @@ Epidemics.
 chime2
 ======
 """
+from ._config import Config
+
+config = Config()

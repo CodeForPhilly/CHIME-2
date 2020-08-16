@@ -3,23 +3,17 @@
 * Compares model against Penn CHIME w/wo social policies
 * Checks logistic policies in extreme limit
 """
-from datetime import date, timedelta
 from typing import Tuple
+from datetime import date, timedelta
 
-from pandas import DataFrame, DatetimeIndex, Series
-from pandas.testing import assert_frame_equal, assert_series_equal
-
-from bayes_chime.normal.models import SIRModel
-from bayes_chime.normal.utilities import one_minus_logistic_fcn
-from penn_chime.model.parameters import Disposition, Parameters
-from penn_chime.model.sir import (
-    Sir,
-    calculate_admits,
-    calculate_census,
-    calculate_dispositions,
-    sim_sir,
-)
+from pandas import Series, DataFrame, DatetimeIndex
 from pytest import fixture
+from pandas.testing import assert_frame_equal, assert_series_equal
+from penn_chime.model.sir import (Sir, sim_sir, calculate_admits,
+                                  calculate_census, calculate_dispositions)
+from bayes_chime.normal.models import SIRModel
+from penn_chime.model.parameters import Parameters, Disposition
+from bayes_chime.normal.utilities import one_minus_logistic_fcn
 
 PENN_CHIME_COMMIT = "188c35be9561164bedded4a8071a320cbde0d2bc"
 

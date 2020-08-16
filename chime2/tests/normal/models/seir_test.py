@@ -3,15 +3,12 @@
 * Compares model against SEIR wo social policies in limit to SIR
 """
 from pandas import Series
-from pandas.testing import assert_frame_equal, assert_series_equal
-
-from bayes_chime.normal.models import SEIRModel, SIRModel
 from pytest import fixture
+from pandas.testing import assert_frame_equal, assert_series_equal
+from bayes_chime.normal.models import SIRModel, SEIRModel
 from tests.normal.models.sir_test import (  # pylint: disable=W0611
-    fixture_penn_chime_raw_df_no_policy,
-    fixture_penn_chime_setup,
-    fixture_sir_data_wo_policy,
-)
+    fixture_penn_chime_setup, fixture_sir_data_wo_policy,
+    fixture_penn_chime_raw_df_no_policy)
 
 COLS_TO_COMPARE = [
     "susceptible",

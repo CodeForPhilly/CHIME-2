@@ -8,7 +8,6 @@ this allows for friendlier user interaction, second it is beneficial to
 project iteration as new components or modules can be developed and
 worked on without explicitly affecting usability of the library.
 """
+from typing import Any, Dict, List
 
-
-class Sim(object):
-    pass
+from chime2 import config
